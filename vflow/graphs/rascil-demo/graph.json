@@ -5,8 +5,8 @@
             "component": "com.sap.dh.trigger",
             "metadata": {
                 "label": "Workflow Trigger",
-                "x": -147,
-                "y": -88,
+                "x": -346,
+                "y": -53,
                 "height": 80,
                 "width": 120,
                 "extensible": true,
@@ -29,7 +29,7 @@
             "component": "com.sap.util.toStringConverter",
             "metadata": {
                 "label": "ToString Converter",
-                "x": 381.99999809265137,
+                "x": 339.99999809265137,
                 "y": 27,
                 "height": 50,
                 "width": 50,
@@ -40,12 +40,26 @@
             "component": "rascil_visibility_sim",
             "metadata": {
                 "label": "RASCIL Simulate Visibilities",
-                "x": 111,
-                "y": -13,
+                "x": -71,
+                "y": -33,
                 "height": 80,
                 "width": 120,
                 "extensible": true,
                 "config": {}
+            }
+        },
+        "rascilcreategleammodel1": {
+            "component": "rascil_gleam_model",
+            "metadata": {
+                "label": "RASCIL Create GLEAM Model",
+                "x": 193,
+                "y": -178,
+                "height": 80,
+                "width": 120,
+                "extensible": true,
+                "config": {
+                    "wprojection_planes": "1"
+                }
             }
         }
     },
@@ -53,7 +67,7 @@
     "connections": [
         {
             "metadata": {
-                "points": "435.99999809265137,52 475.99999809265137,52"
+                "points": "393.99999809265137,52 475.99999809265137,52"
             },
             "src": {
                 "port": "outstring",
@@ -66,7 +80,7 @@
         },
         {
             "metadata": {
-                "points": "-23,-48 41.5,-48 41.5,27 106,27"
+                "points": "-222,-13 -149,-13 -149,7 -76,7"
             },
             "src": {
                 "port": "output",
@@ -79,15 +93,15 @@
         },
         {
             "metadata": {
-                "points": "235,27 306,27 306,43 376.99999809265137,43"
+                "points": "53,7 120.5,7 120.5,-138 188,-138"
             },
             "src": {
                 "port": "output",
                 "process": "rascilsimulatevisibilities1"
             },
             "tgt": {
-                "port": "ininterface",
-                "process": "tostringconverter1"
+                "port": "input",
+                "process": "rascilcreategleammodel1"
             }
         }
     ],

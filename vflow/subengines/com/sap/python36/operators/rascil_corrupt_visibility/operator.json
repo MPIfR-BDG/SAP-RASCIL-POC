@@ -1,0 +1,25 @@
+{
+    "description": "RASCIL Corrupt Visibilities",
+    "component": "com.sap.system.python3Operator",
+    "versionStatus": "active",
+    "inports": [
+        {
+            "name": "input",
+            "type": "string"
+        }
+    ],
+    "outports": [
+        {
+            "name": "output",
+            "type": "string"
+        }
+    ],
+    "iconsrc": "python.svg",
+    "config": {
+        "script": "file://script.py",
+        "scriptReference": "script.py"
+    },
+    "tags": {
+        "": ""
+    }
+}
