@@ -1,0 +1,24 @@
+{
+    "description": "RASCIL Create GLEAM Model",
+    "component": "com.sap.system.python3Operator",
+    "versionStatus": "active",
+    "inports": [
+        {
+            "name": "input",
+            "type": "string"
+        }
+    ],
+    "outports": [
+        {
+            "name": "output",
+            "type": "string"
+        }
+    ],
+    "iconsrc": "python.svg",
+    "config": {
+        "script": "file://script.py",
+        "scriptReference": "script.py",
+        "wprojection_planes": 1,
+        "flux_limit": 1.0
+    }
+}

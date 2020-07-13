@@ -1,0 +1,29 @@
+{
+    "description": "RASCIL Compare Images",
+    "component": "com.sap.system.python3Operator",
+    "versionStatus": "active",
+    "inports": [
+        {
+            "name": "image1",
+            "type": "string"
+        },
+        {
+            "name": "image2",
+            "type": "string"
+        }
+    ],
+    "outports": [
+        {
+            "name": "output",
+            "type": "string"
+        }
+    ],
+    "iconsrc": "python.svg",
+    "config": {
+        "script": "file://script.py",
+        "scriptReference": "script.py"
+    },
+    "tags": {
+        "": ""
+    }
+}

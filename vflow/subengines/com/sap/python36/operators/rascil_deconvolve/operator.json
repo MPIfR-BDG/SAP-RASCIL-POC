@@ -1,0 +1,29 @@
+{
+    "description": "RASCIL Deconvolve",
+    "component": "com.sap.system.python3Operator",
+    "versionStatus": "active",
+    "inports": [
+        {
+            "name": "input_vis",
+            "type": "string"
+        },
+        {
+            "name": "input_psf",
+            "type": "string"
+        }
+    ],
+    "outports": [
+        {
+            "name": "output",
+            "type": "string"
+        }
+    ],
+    "iconsrc": "python.svg",
+    "config": {
+        "script": "file://script.py",
+        "scriptReference": "script.py"
+    },
+    "tags": {
+        "": ""
+    }
+}
