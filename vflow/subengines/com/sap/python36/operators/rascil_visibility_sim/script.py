@@ -53,7 +53,8 @@ def execute(config_json):
     log.debug("Executing convert_bvis_to_vis")
     vis_list = [convert_bvis_to_vis(bv) for bv in bvis_list]
     log.debug("Visibility simulation complete")
-    api.send("output", pickle.dumps(vis_list))
+    message = {"vis_list": vis_list}
+    api.send("output", pickle.dumps(message))
 
 
 api.add_shutdown_handler(lambda: log.info(
