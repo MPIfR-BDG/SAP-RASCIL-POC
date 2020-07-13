@@ -1,5 +1,6 @@
-import numpy as np
 import json
+import pickle
+import numpy as np
 import astropy.units as u
 from astropy.coordinates import SkyCoord
 from rascil.processing_components.visibility import (
@@ -52,7 +53,7 @@ def execute(config_json):
     log.debug("Executing convert_bvis_to_vis")
     vis_list = [convert_bvis_to_vis(bv) for bv in bvis_list]
     log.debug("Visibility simulation complete")
-    return vis_list
+    api.send("output", pickle.dumps(vis_list))
 
 
 api.add_shutdown_handler(lambda: log.info(
