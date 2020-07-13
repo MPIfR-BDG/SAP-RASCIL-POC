@@ -1,3 +1,8 @@
+# Data Intelligence specific
+launchpad/
+vflow/general/
+.repoid
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
