@@ -8,7 +8,7 @@ from rascil.processing_components.simulation import (
 log = api.logger
 log.info("Starting GLEAM model generation operator")
 
-def execute(vis_list_pickle):
+def execute(rascil_pickle):
     """
     @brief   Create a visibility set based on the operator configuration
 
@@ -18,7 +18,8 @@ def execute(vis_list_pickle):
                            operator configuration.
     """
     log.debug("Executing GLEAM model generation")
-    vis_list = pickle.loads(vis_list_pickle)
+    rascil_data = pickle.loads(rascil_pickle)
+    vis_list = rascil_data["visibilities"]
     wprojection_planes = api.config.wprojection_planes
 
     advice_low = advise_wide_field(
@@ -46,9 +47,12 @@ def execute(vis_list_pickle):
                 flux_limit=1.0,
                 applybeam=True))
     message = {
-        "gleam_model": gleam_model,
-        "vis_slices": vis_slices,
-        "cellsize": cellsize
+        "metadata": {
+            "visibility_slices": vis_slices,
+            "cellsize": cellsize,
+        },
+            "images": gleam_model,
+            "visibilities": vis_list
         }
     api.send("output", pickle.dumps(message))
 
