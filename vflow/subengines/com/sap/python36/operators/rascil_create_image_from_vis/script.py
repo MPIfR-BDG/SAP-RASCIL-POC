@@ -7,9 +7,10 @@ log = api.logger
 log.info("Starting model creation operator")
 
 
-def execute(data_pickle):
+def execute(rascil_pickle):
     log.debug("Executing model creation")
-    data = pickle.loads(data_pickle)
+    data = pickle.loads(rascil_pickle)
+    vis_list = data["visibilities"]
     model_list = []
     for vis in vis_list:
         model_list.append(
@@ -23,7 +24,11 @@ def execute(data_pickle):
                 polarisation_frame=PolarisationFrame("stokesI")
             )
         )
-    data["model_list"] = model_list
+    message = {
+        "metadata": {},
+        "images": model_list,
+        "visibilities": vis_list
+    }
     api.send("output", pickle.dumps(data))
 
 api.add_shutdown_handler(lambda: log.info(

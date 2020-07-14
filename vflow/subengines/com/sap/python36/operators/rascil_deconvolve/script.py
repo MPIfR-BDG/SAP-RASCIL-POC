@@ -4,26 +4,31 @@ from rascil.workflows.serial.imaging.imaging_serial import deconvolve_list_seria
 log = api.logger
 log.info("Starting deconvolution operator")
 
-def execute(vis_data_pickle, psf_pickle):
+def execute(rascil_vis_pickle, rasicl_psf_pickle, rasicl_model_pickle):
     log.debug("Executing deconvolution")
-    data = pickle.loads(vis_data_pickle)
-    psf_list = pickle.loads(psf_pickle)
+    vis_data = pickle.loads(rascil_vis_pickle)
+    psf_data = pickle.loads(rasicl_psf_pickle)
+    model_data = pickle.loads(rasicl_model_pickle)
     deconvolved = deconvolve_list_serial_workflow(
-        data["vis_list"], 
-        psf_list, 
-        model_imagelist=data["model_list"], 
-        deconvolve_facets=8, 
-        deconvolve_overlap=16, 
-        deconvolve_taper='tukey',
-        scales=[0, 3, 10],
-        algorithm='msclean', 
-        niter=1000, 
-        fractional_threshold=0.1,
-        threshold=0.1, 
-        gain=0.1, 
-        psf_support=64)
-    api.send("output", pickle.dumps(deconvolved))
+        vis_data["visibilities"], 
+        psf_data["images"], 
+        model_imagelist=model_data["images"], 
+        deconvolve_facets=api.config.deconvolve_facets, 
+        deconvolve_overlap=api.config.deconvolve_overlap, 
+        deconvolve_taper=api.config.deconvolve_taper,
+        scales=api.config.scales,
+        algorithm=api.config.algorithm, 
+        niter=api.config.niter, 
+        fractional_threshold=api.config.fractional_threshold,
+        threshold=api.config.threshold, 
+        gain=api.config.gain, 
+        psf_support=api.config.psf_support)
+    message = {
+        "metadata": {},
+        "images": deconvolved
+    }
+    api.send("output", pickle.dumps(message))
 
 api.add_shutdown_handler(lambda: log.info(
     "Shutting down deconvolution operator"))
-api.set_port_callback(["input_vis", "input_psf"], execute)
+api.set_port_callback(["input_vis", "input_psf", "input_model"], execute)

@@ -10,6 +10,10 @@
         {
             "name": "input_psf",
             "type": "string"
+        },
+        {
+            "name": "input_model",
+            "type": "string"
         }
     ],
     "outports": [
@@ -21,7 +25,17 @@
     "iconsrc": "python.svg",
     "config": {
         "script": "file://script.py",
-        "scriptReference": "script.py"
+        "scriptReference": "script.py",
+        "deconvolve_facets": 8, 
+        "deconvolve_overlap": 16, 
+        "deconvolve_taper": "tukey",
+        "scales": [0, 3, 10],
+        "algorithm": "msclean", 
+        "niter": 1000, 
+        "fractional_threshold": 0.1,
+        "threshold": 0.1, 
+        "gain": 0.1, 
+        "psf_support": 64
     },
     "tags": {
         "": ""

@@ -4,7 +4,11 @@
     "versionStatus": "active",
     "inports": [
         {
-            "name": "input",
+            "name": "inputmodel",
+            "type": "string"
+        },
+        {
+            "name": "inputvislist",
             "type": "string"
         }
     ],
@@ -16,9 +20,9 @@
     ],
     "iconsrc": "python.svg",
     "config": {
+        "dopsf": true,
         "script": "file://script.py",
-        "scriptReference": "script.py",
-        "dopsf": true
+        "scriptReference": "script.py"
     },
     "tags": {
         "": ""

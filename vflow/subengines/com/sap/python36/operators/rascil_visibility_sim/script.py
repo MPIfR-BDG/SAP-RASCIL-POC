@@ -28,17 +28,17 @@ def execute(config_json):
 
     log.debug("Executing visibility simulation")
     frequency = np.linspace(
-        get_param("fbottom"),
-        get_param("ftop"),
-        get_param("nfreqwin"))
+        get_param("frequency_low_hz"),
+        get_param("frequency_hi_hz"),
+        get_param("n_frequency_windows"))
     bw = (frequency[1]-frequency[0])
-    channel_bandwidth = np.ones(get_param("nfreqwin")) * bw
-    times = np.linspace(-np.pi/3.0, np.pi/3.0, get_param("ntimes"))
+    channel_bandwidth = np.ones(get_param("n_frequency_windows")) * bw
+    times = np.linspace(-np.pi/3.0, np.pi/3.0, get_param("n_time_steps"))
     phasecentre = SkyCoord(
-        ra=get_param("ra") * u.deg,
-        dec=get_param("deg") * u.deg,
-        frame=get_param("frame"),
-        equinox=get_param("epoch"))
+        ra=get_param("phasecentre_ra_deg") * u.deg,
+        dec=get_param("phasecentre_dec_deg") * u.deg,
+        frame=get_param("phasecentre_frame"),
+        equinox=get_param("phasecentre_epoch"))
     array_configuration = get_param("array_configuration")
     log.debug("Executing simulate_list_serial_workflow")
     bvis_list = simulate_list_serial_workflow(
@@ -48,12 +48,16 @@ def execute(config_json):
         times=times,
         phasecentre=phasecentre,
         order="frequency",
-        rmax=get_param("rmax"),
+        rmax=get_param("max_radius_m"),
         format="blockvis")
     log.debug("Executing convert_bvis_to_vis")
     vis_list = [convert_bvis_to_vis(bv) for bv in bvis_list]
     log.debug("Visibility simulation complete")
-    message = {"vis_list": vis_list}
+    message = {
+        "metadata": {
+        },
+        "visibilities": vis_list
+    }
     api.send("output", pickle.dumps(message))
 
 
