@@ -1,6 +1,7 @@
 #! /bin/bash -f
 
-FULLPATH=$(realpath $0)
+
+FULLPATH=$(realpath $BASH_SOURCE)
 DIRONLY=$(dirname $FULLPATH)
 LIBLOCAL="${DIRONLY}/../local_lib/"
 echo $LIBLOCAL

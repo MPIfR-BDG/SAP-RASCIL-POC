@@ -29,6 +29,8 @@ class API:
     self.test.stop_timers = self._stop_timers
     self.timers = {}
     self.stopTimer = False
+    self.logger = _Obj()
+    self.logger.info = self._info
 
   def tick(self,time,func):
     if self.stopTimer:
@@ -70,6 +72,9 @@ class API:
 
   def _hasnext(self, portname):
     return len(self.output[portname]) > 0
+
+  def _info(self, message):
+    print(message)
 
 api = API()
 api.Message = _Message

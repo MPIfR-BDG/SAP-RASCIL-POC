@@ -1,3 +1,10 @@
+try:
+    api
+except NameError:
+    from pyop_api_mock import api
+# ////////////////////////////////////////////////////////
+
+
 import json
 import pickle
 import numpy as np
@@ -56,6 +63,24 @@ def execute(config_json):
     api.send("output", pickle.dumps(vis_list))
 
 
-api.add_shutdown_handler(lambda: log.info(
-    "Shutting down visibility simulation operator"))
+#api.add_shutdown_handler(lambda: log.info(
+#    "Shutting down visibility simulation operator"))
 api.set_port_callback("input", execute)
+
+
+# ////////////////////////////////////////////////////////
+
+def test() :
+    print('Test: Default')
+    #api.set_port_callback('input', call_on_input)
+    #print('Test: config')
+    #config = api.config
+    #config.var1 = 'own foo'
+    #config.var12 = 'own bar'
+    #test_msg = api.Message(attributes={'name':'test1'},body =4)
+    #new_msg = api.call(config,test_msg)
+    #print('Attributes: ', new_msg.attributes)
+    #print('Body: ', str(new_msg.body))
+
+if __name__ == "__main__":
+    test()
