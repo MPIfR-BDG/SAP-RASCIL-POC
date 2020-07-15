@@ -2,6 +2,17 @@ try:
     api
 except NameError:
     from pyop_api_mock import api
+    api.config.antenna_configuration = "LOWBD2"
+    api.config.frequency_hi_hz = 120000000
+    api.config.frequency_low_hz = 100000000
+    api.config.max_radius = 300
+    api.config.n_frequency_windows = 7
+    api.config.n_time_steps = 5
+    api.config.phasecentre_dec_deg = -60
+    api.config.phasecentre_epoch = "J2000"
+    api.config.phasecentre_frame = "icrs"
+    api.config.phasecentre_ra_deg = 30
+
 # ////////////////////////////////////////////////////////
 
 
@@ -46,16 +57,16 @@ def execute(config_json):
         dec=get_param("phasecentre_dec_deg") * u.deg,
         frame=get_param("phasecentre_frame"),
         equinox=get_param("phasecentre_epoch"))
-    array_configuration = get_param("array_configuration")
+    antenna_configuration = get_param("antenna_configuration")
     log.debug("Executing simulate_list_serial_workflow")
     bvis_list = simulate_list_serial_workflow(
-        array_configuration,
+        antenna_configuration,
         frequency=frequency,
         channel_bandwidth=channel_bandwidth,
         times=times,
         phasecentre=phasecentre,
         order="frequency",
-        rmax=get_param("max_radius_m"),
+        rmax=get_param("max_radius"),
         format="blockvis")
     log.debug("Executing convert_bvis_to_vis")
     vis_list = [convert_bvis_to_vis(bv) for bv in bvis_list]
@@ -72,6 +83,16 @@ api.set_port_callback("input", execute)
 
 def test() :
     print('Test: Default')
+    print(api.config)
+    api.test.write("input","{}") # empty json input
+    while api.test.hasnext("output"):
+        vis_pickle = api.test.read("output")
+        vis_list = pickle.loads(vis_pickle)
+        print(str(len(vis_list)))
+        print(str(vis_list))
+        for vis in vis_list:
+            print(str(vis))
+
     #api.set_port_callback('input', call_on_input)
     #print('Test: config')
     #config = api.config

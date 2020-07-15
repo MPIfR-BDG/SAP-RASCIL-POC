@@ -31,6 +31,9 @@ class API:
     self.stopTimer = False
     self.logger = _Obj()
     self.logger.info = self._info
+    self.logger.debug = self._debug
+    self.logger.warn = self._warn
+    self.logger.error = self._error
 
   def tick(self,time,func):
     if self.stopTimer:
@@ -74,6 +77,15 @@ class API:
     return len(self.output[portname]) > 0
 
   def _info(self, message):
+    print(message)
+
+  def _debug(self, message):
+    print(message)
+
+  def _warn(self, message):
+    print(message)
+
+  def _error(self, message):
     print(message)
 
 api = API()
