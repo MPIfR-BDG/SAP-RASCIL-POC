@@ -82,14 +82,13 @@ api.set_port_callback("input", execute)
 # ////////////////////////////////////////////////////////
 
 if __name__ == "__main__":
-    def test() :
-        print('Test: Default')
-        print(api.config)
-        api.test.write("input","{}") # empty json input
-        while api.test.hasnext("output"):
-            vis_pickle = api.test.read("output")
-            vis_list = pickle.loads(vis_pickle)
-            print(str(len(vis_list)))
-            print(str(vis_list))
-            for vis in vis_list:
-                print(str(vis))
+    print('Test: Default')
+    print(api.config)
+    api.test.write("input","{}") # empty json input
+    while api.test.hasnext("output"):
+        vis_pickle = api.test.read("output")
+        vis_list = pickle.loads(vis_pickle)
+        print(str(len(vis_list)))
+        print(str(vis_list))
+        for vis in vis_list:
+            print(str(vis))
