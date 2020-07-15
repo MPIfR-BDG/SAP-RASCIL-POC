@@ -4,15 +4,15 @@
     "versionStatus": "active",
     "inports": [
         {
-            "name": "input_vis",
+            "name": "inputvis",
             "type": "string"
         },
         {
-            "name": "input_psf",
+            "name": "inputpsf",
             "type": "string"
         },
         {
-            "name": "input_model",
+            "name": "inputmodel",
             "type": "string"
         }
     ],
@@ -24,18 +24,23 @@
     ],
     "iconsrc": "python.svg",
     "config": {
+        "$type": "http://sap.com/vflow/rascil_deconvolve.configSchema.json",
+        "algorithm": "msclean",
+        "deconvolve_facets": 8,
+        "deconvolve_overlap": 16,
+        "deconvolve_taper": "tukey",
+        "fractional_threshold": 0,
+        "gain": 0,
+        "niter": 1000,
+        "psf_support": 64,
+        "scales": [
+            0,
+            3,
+            10
+        ],
         "script": "file://script.py",
         "scriptReference": "script.py",
-        "deconvolve_facets": 8, 
-        "deconvolve_overlap": 16, 
-        "deconvolve_taper": "tukey",
-        "scales": [0, 3, 10],
-        "algorithm": "msclean", 
-        "niter": 1000, 
-        "fractional_threshold": 0.1,
-        "threshold": 0.1, 
-        "gain": 0.1, 
-        "psf_support": 64
+        "threshold": 0
     },
     "tags": {
         "": ""

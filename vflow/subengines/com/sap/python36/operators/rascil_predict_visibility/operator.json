@@ -4,7 +4,15 @@
     "versionStatus": "active",
     "inports": [
         {
-            "name": "input",
+            "name": "inputvis",
+            "type": "string"
+        },
+        {
+            "name": "inputmodel",
+            "type": "string"
+        },
+        {
+            "name": "inputadvice",
             "type": "string"
         }
     ],

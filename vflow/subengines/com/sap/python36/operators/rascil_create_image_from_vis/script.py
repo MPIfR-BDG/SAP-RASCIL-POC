@@ -7,10 +7,13 @@ log = api.logger
 log.info("Starting model creation operator")
 
 
-def execute(rascil_pickle):
+def execute(vis_pickle, advice_pickle):
     log.debug("Executing model creation")
-    data = pickle.loads(rascil_pickle)
-    vis_list = data["visibilities"]
+    vis_list = pickle.loads(vis_pickle)
+    advice = pickle.loads(advice_pickle)
+    vis_slices = advice['vis_slices']
+    npixel = advice['npixels2']
+    cellsize = advice['cellsize']
     model_list = []
     for vis in vis_list:
         model_list.append(
@@ -19,18 +22,13 @@ def execute(rascil_pickle):
                 npixel=npixel,
                 frequency=[vis.frequency[0]],
                 channel_bandwidth=[vis.channel_bandwidth[0]],
-                cellsize=data["cellsize"],
+                cellsize=cellsize,
                 phasecentre=vis.phasecentre,
                 polarisation_frame=PolarisationFrame("stokesI")
             )
         )
-    message = {
-        "metadata": {},
-        "images": model_list,
-        "visibilities": vis_list
-    }
-    api.send("output", pickle.dumps(data))
+    api.send("output", pickle.dumps(model_list))
 
 api.add_shutdown_handler(lambda: log.info(
     "Shutting down model creation operator"))
-api.set_port_callback("input", execute)
+api.set_port_callback(["inputvis", "inputadvice"], execute)

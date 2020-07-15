@@ -6,18 +6,19 @@ log = api.logger
 log.info("Starting visibility prediction operator")
 
 
-def execute(data_pickle):
+def execute(vis_pickle, model_pickle, advice_pickle):
     log.debug("Executing visibility prediction")
-    data = pickle.loads(data_pickle)
+    vis_list = pickle.loads(vis_pickle)
+    model_list = pickle.loads(model_pickle)
+    advice = pickle.loads(advice_pickle)
     predicted_vislist = predict_list_serial_workflow(
-        data["vis_list"], 
-        data["gleam_model"],  
+        vis_list, 
+        model_list,  
         context='wstack', 
-        vis_slices=data["vis_slices"])
-    data["predicted_vislist"] = predicted_vislist
-    api.send("output", pickle.dumps(data))
+        vis_slices=advice["vis_slices"])
+    api.send("output", pickle.dumps(predicted_vislist))
 
 
 api.add_shutdown_handler(lambda: log.info(
     "Shutting down visibility prediction operator"))
-api.set_port_callback("input", execute)
+api.set_port_callback(["inputvis", "inputmodel", "inputadvice"], execute)

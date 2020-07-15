@@ -5,15 +5,13 @@ from rascil.workflows.serial.simulation.simulation_serial import (
 log = api.logger
 log.info("Starting visibility corruption operator")
 
-def execute(rascil_pickle):
+def execute(vis_pickle):
     log.debug("Executing visibility corruption")
-    data = pickle.loads(rascil_pickle)
+    vis_list = pickle.loads(vis_pickle)
     corrupted_vislist = corrupt_list_serial_workflow(
-        data["visibilities"], 
+        vis_list, 
         phase_error=api.config.phase_error)
-    message = data
-    message["visibilities"] = corrupted_vislist
-    api.send("output", pickle.dumps(message))
+    api.send("output", pickle.dumps(corrupted_vislist))
 
 
 api.add_shutdown_handler(lambda: log.info(

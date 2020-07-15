@@ -8,7 +8,11 @@
             "type": "string"
         },
         {
-            "name": "inputvislist",
+            "name": "inputvis",
+            "type": "string"
+        },
+        {
+            "name": "inputadvice",
             "type": "string"
         }
     ],
@@ -20,7 +24,8 @@
     ],
     "iconsrc": "python.svg",
     "config": {
-        "dopsf": true,
+        "$type": "http://sap.com/vflow/rascil_invert_visibilities.configSchema.json",
+        "dopsf": false,
         "script": "file://script.py",
         "scriptReference": "script.py"
     },

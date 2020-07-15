@@ -1,0 +1,25 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "http://sap.com/vflow/rascil_advise_imaging.configSchema.json",
+    "type": "object",
+    "properties": {
+        "codelanguage": {
+            "type": "string"
+        },
+        "delA": {
+            "type": "number"
+        },
+        "guard_band_image": {
+            "type": "number"
+        },
+        "scriptReference": {
+            "type": "string"
+        },
+        "wprojection_planes": {
+            "type": "number"
+        },
+        "script": {
+            "type": "string"
+        }
+    }
+}
