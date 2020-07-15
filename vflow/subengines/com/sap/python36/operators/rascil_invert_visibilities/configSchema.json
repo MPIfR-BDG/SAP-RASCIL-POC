@@ -1,0 +1,19 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "http://sap.com/vflow/rascil_invert_visibilities.configSchema.json",
+    "type": "object",
+    "properties": {
+        "codelanguage": {
+            "type": "string"
+        },
+        "dopsf": {
+            "type": "boolean"
+        },
+        "scriptReference": {
+            "type": "string"
+        },
+        "script": {
+            "type": "string"
+        }
+    }
+}

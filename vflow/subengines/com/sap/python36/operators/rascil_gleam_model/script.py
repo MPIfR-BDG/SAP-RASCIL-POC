@@ -8,7 +8,7 @@ from rascil.processing_components.simulation import (
 log = api.logger
 log.info("Starting GLEAM model generation operator")
 
-def execute(rascil_pickle):
+def execute(vis_pickle, advice_pickle):
     """
     @brief   Create a visibility set based on the operator configuration
 
@@ -18,22 +18,11 @@ def execute(rascil_pickle):
                            operator configuration.
     """
     log.debug("Executing GLEAM model generation")
-    rascil_data = pickle.loads(rascil_pickle)
-    vis_list = rascil_data["visibilities"]
-    wprojection_planes = api.config.wprojection_planes
-
-    advice_low = advise_wide_field(
-        vis_list[0], guard_band_image=8.0, delA=0.02,
-        wprojection_planes=wprojection_planes)
-
-    advice_high = advise_wide_field(
-        vis_list[-1], guard_band_image=8.0, delA=0.02,
-        wprojection_planes=wprojection_planes)
-
-    vis_slices = advice_low['vis_slices']
-    npixel = advice_high['npixels2']
-    cellsize = min(advice_low['cellsize'], advice_high['cellsize'])
-
+    vis_list = pickle.loads(vis_pickle)
+    advice = pickle.loads(advice_pickle)
+    vis_slices = advice['vis_slices']
+    npixel = advice['npixels2']
+    cellsize = advice['cellsize'] 
     gleam_model = []
     for vis in vis_list:
         gleam_model.append(
@@ -44,18 +33,10 @@ def execute(rascil_pickle):
                 cellsize=cellsize,
                 phasecentre=vis.phasecentre,
                 polarisation_frame=PolarisationFrame("stokesI"),
-                flux_limit=1.0,
+                flux_limit=api.config.flux_limit,
                 applybeam=True))
-    message = {
-        "metadata": {
-            "visibility_slices": vis_slices,
-            "cellsize": cellsize,
-        },
-            "images": gleam_model,
-            "visibilities": vis_list
-        }
-    api.send("output", pickle.dumps(message))
+    api.send("output", pickle.dumps(gleam_model))
 
 api.add_shutdown_handler(lambda: log.info(
     "Shutting down GLEAM model generation operator"))
-api.set_port_callback("input", execute)
+api.set_port_callback(["inputvis", "inputadvice"], execute)

@@ -4,15 +4,15 @@ from rascil.workflows.serial.imaging.imaging_serial import deconvolve_list_seria
 log = api.logger
 log.info("Starting deconvolution operator")
 
-def execute(rascil_vis_pickle, rasicl_psf_pickle, rasicl_model_pickle):
+def execute(vis_pickle, psf_pickle, model_pickle):
     log.debug("Executing deconvolution")
-    vis_data = pickle.loads(rascil_vis_pickle)
-    psf_data = pickle.loads(rasicl_psf_pickle)
-    model_data = pickle.loads(rasicl_model_pickle)
+    vis_list = pickle.loads(vis_pickle)
+    psf_list = pickle.loads(psf_pickle)
+    model_list = pickle.loads(model_pickle)
     deconvolved = deconvolve_list_serial_workflow(
-        vis_data["visibilities"], 
-        psf_data["images"], 
-        model_imagelist=model_data["images"], 
+        vis_list, 
+        psf_list, 
+        model_imagelist=model_list, 
         deconvolve_facets=api.config.deconvolve_facets, 
         deconvolve_overlap=api.config.deconvolve_overlap, 
         deconvolve_taper=api.config.deconvolve_taper,
@@ -23,12 +23,8 @@ def execute(rascil_vis_pickle, rasicl_psf_pickle, rasicl_model_pickle):
         threshold=api.config.threshold, 
         gain=api.config.gain, 
         psf_support=api.config.psf_support)
-    message = {
-        "metadata": {},
-        "images": deconvolved
-    }
-    api.send("output", pickle.dumps(message))
+    api.send("output", pickle.dumps(deconvolved))
 
 api.add_shutdown_handler(lambda: log.info(
     "Shutting down deconvolution operator"))
-api.set_port_callback(["input_vis", "input_psf", "input_model"], execute)
+api.set_port_callback(["inputvis", "inputpsf", "inputmodel"], execute)

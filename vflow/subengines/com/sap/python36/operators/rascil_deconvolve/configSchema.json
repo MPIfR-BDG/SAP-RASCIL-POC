@@ -1,0 +1,49 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "http://sap.com/vflow/rascil_deconvolve.configSchema.json",
+    "type": "object",
+    "properties": {
+        "codelanguage": {
+            "type": "string"
+        },
+        "algorithm": {
+            "type": "string"
+        },
+        "deconvolve_facets": {
+            "type": "number"
+        },
+        "deconvolve_overlap": {
+            "type": "number"
+        },
+        "deconvolve_taper": {
+            "type": "string"
+        },
+        "fractional_threshold": {
+            "type": "number"
+        },
+        "gain": {
+            "type": "number"
+        },
+        "niter": {
+            "type": "number"
+        },
+        "psf_support": {
+            "type": "number"
+        },
+        "scales": {
+            "type": "array",
+            "items": {
+                "type": "number"
+            }
+        },
+        "scriptReference": {
+            "type": "string"
+        },
+        "threshold": {
+            "type": "number"
+        },
+        "script": {
+            "type": "string"
+        }
+    }
+}

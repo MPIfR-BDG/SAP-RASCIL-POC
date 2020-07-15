@@ -4,7 +4,11 @@
     "versionStatus": "active",
     "inports": [
         {
-            "name": "input",
+            "name": "inputvis",
+            "type": "string"
+        },
+        {
+            "name": "inputadvice",
             "type": "string"
         }
     ],

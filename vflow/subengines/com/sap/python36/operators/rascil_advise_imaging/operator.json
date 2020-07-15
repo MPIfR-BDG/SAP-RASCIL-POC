@@ -1,5 +1,5 @@
 {
-    "description": "RASCIL Corrupt Visibilities",
+    "description": "RASCIL Advise Wide Field",
     "component": "com.sap.system.python3Operator",
     "versionStatus": "active",
     "inports": [
@@ -16,10 +16,12 @@
     ],
     "iconsrc": "python.svg",
     "config": {
-        "$type": "http://sap.com/vflow/rascil_corrupt_visibility.configSchema.json",
-        "phase_error": 1,
+        "$type": "http://sap.com/vflow/rascil_advise_imaging.configSchema.json",
+        "delA": 0,
+        "guard_band_image": 0,
         "script": "file://script.py",
-        "scriptReference": "script.py"
+        "scriptReference": "script.py",
+        "wprojection_planes": 1
     },
     "tags": {
         "": ""

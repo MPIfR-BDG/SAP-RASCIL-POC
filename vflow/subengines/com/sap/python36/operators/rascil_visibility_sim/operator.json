@@ -16,18 +16,19 @@
     ],
     "iconsrc": "python.svg",
     "config": {
-        "script": "file://script.py",
-        "scriptReference": "script.py",
-        "frequency_low_hz": 1e8,
-        "frequency_hi_hz": 1.2e8,
+        "$type": "http://sap.com/vflow/rascil_visibility_sim.configSchema.json",
+        "antenna_configuration": "LOWBD2",
+        "frequency_hi_hz": 120000000,
+        "frequency_low_hz": 100000000,
+        "max_radius": 300,
         "n_frequency_windows": 7,
         "n_time_steps": 5,
-        "max_radius": 300.0,
-        "antenna_configuration": "LOWBD2",
-        "phasecentre_ra_deg": 30.0,
-        "phasecentre_dec_deg": -60.0,
+        "phasecentre_dec_deg": -60,
+        "phasecentre_epoch": "J2000",
         "phasecentre_frame": "icrs",
-        "phasecentre_epoch": "J2000"
+        "phasecentre_ra_deg": 30,
+        "script": "file://script.py",
+        "scriptReference": "script.py"
     },
     "tags": {
         "": ""

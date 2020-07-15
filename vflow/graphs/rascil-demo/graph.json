@@ -7,7 +7,7 @@
             "metadata": {
                 "label": "Workflow Trigger",
                 "x": 12,
-                "y": 169.49999904632568,
+                "y": 177.99999952316284,
                 "height": 80,
                 "width": 120,
                 "extensible": true,
@@ -18,8 +18,8 @@
             "component": "com.sap.util.terminal",
             "metadata": {
                 "label": "Terminal",
-                "x": 2072.99999332428,
-                "y": 169.49999904632568,
+                "x": 2618.999990463257,
+                "y": 177.99999952316284,
                 "height": 80,
                 "width": 120,
                 "ui": "dynpath",
@@ -30,8 +30,8 @@
             "component": "com.sap.util.toStringConverter",
             "metadata": {
                 "label": "ToString Converter",
-                "x": 1973.9999933242798,
-                "y": 184.49999904632568,
+                "x": 2519.999990463257,
+                "y": 192.99999952316284,
                 "height": 50,
                 "width": 50,
                 "config": {}
@@ -42,31 +42,7 @@
             "metadata": {
                 "label": "RASCIL Simulate Observation",
                 "x": 181,
-                "y": 169.49999904632568,
-                "height": 80,
-                "width": 120,
-                "extensible": true,
-                "config": {}
-            }
-        },
-        "rascilcreategleammodel1": {
-            "component": "rascil_gleam_model",
-            "metadata": {
-                "label": "RASCIL Create GLEAM Model",
-                "x": 550.9999990463257,
-                "y": 229.49999904632568,
-                "height": 80,
-                "width": 120,
-                "extensible": true,
-                "config": {}
-            }
-        },
-        "rascilpredictvisibilities1": {
-            "component": "rascil_predict_visibility",
-            "metadata": {
-                "label": "RASCIL Predict Visibilities",
-                "x": 719.9999990463257,
-                "y": 229.49999904632568,
+                "y": 177.99999952316284,
                 "height": 80,
                 "width": 120,
                 "extensible": true,
@@ -77,56 +53,8 @@
             "component": "com.sap.system.multiplexer.1-3",
             "metadata": {
                 "label": "1:3 Multiplexer",
-                "x": 920.9999980926514,
-                "y": 229.49999904632568,
-                "height": 80,
-                "width": 120,
-                "extensible": true,
-                "config": {}
-            }
-        },
-        "rascilcreateimagefromvisibilities1": {
-            "component": "rascil_create_image_from_vis",
-            "metadata": {
-                "label": "RASCIL Create Image Model",
-                "x": 550.9999990463257,
-                "y": 109.49999904632568,
-                "height": 80,
-                "width": 120,
-                "extensible": true,
-                "config": {}
-            }
-        },
-        "12multiplexer1": {
-            "component": "com.sap.system.multiplexer.1-2",
-            "metadata": {
-                "label": "1:2 Multiplexer",
-                "x": 350,
-                "y": 169.49999904632568,
-                "height": 80,
-                "width": 120,
-                "extensible": true,
-                "config": {}
-            }
-        },
-        "rascilinvertvisibilities2": {
-            "component": "rascil_invert_visibilities",
-            "metadata": {
-                "label": "RASCIL Create PSF",
-                "x": 1201.999997138977,
-                "y": 177.99999856948853,
-                "height": 80,
-                "width": 120,
-                "extensible": true,
-                "config": {}
-            }
-        },
-        "rascilinvertvisibilities1": {
-            "component": "rascil_invert_visibilities",
-            "metadata": {
-                "label": "RASCIL Invert Visibilities",
-                "x": 1201.999997138977,
-                "y": 297.9999985694885,
+                "x": 1402.9999952316284,
+                "y": 200.99999928474426,
                 "height": 80,
                 "width": 120,
                 "extensible": true,
@@ -137,20 +65,8 @@
             "component": "rascil_corrupt_visibility",
             "metadata": {
                 "label": "RASCIL Corrupt Visibilities",
-                "x": 1201.999997138977,
-                "y": 40.99999952316284,
-                "height": 80,
-                "width": 120,
-                "extensible": true,
-                "config": {}
-            }
-        },
-        "rascilinvertvisibilities3": {
-            "component": "rascil_invert_visibilities",
-            "metadata": {
-                "label": "RASCIL Invert Visibilities",
-                "x": 1402.9999961853027,
-                "y": 77.99999976158142,
+                "x": 1667.999994277954,
+                "y": 74.99999952316284,
                 "height": 80,
                 "width": 120,
                 "extensible": true,
@@ -161,8 +77,8 @@
             "component": "com.sap.system.multiplexer.1-3",
             "metadata": {
                 "label": "1:3 Multiplexer",
-                "x": 920.9999980926514,
-                "y": 109.49999904632568,
+                "x": 1402.9999952316284,
+                "y": 80.99999928474426,
                 "height": 80,
                 "width": 120,
                 "extensible": true,
@@ -173,8 +89,8 @@
             "component": "com.sap.system.multiplexer.1-2",
             "metadata": {
                 "label": "1:2 Multiplexer",
-                "x": 1402.9999961853027,
-                "y": 214.9999988079071,
+                "x": 1900.9999933242798,
+                "y": 246.49999952316284,
                 "height": 80,
                 "width": 120,
                 "extensible": true,
@@ -185,32 +101,8 @@
             "component": "rascil_compare_image",
             "metadata": {
                 "label": "RASCIL Compare Images",
-                "x": 1788.999994277954,
-                "y": 169.49999904632568,
-                "height": 80,
-                "width": 120,
-                "extensible": true,
-                "config": {}
-            }
-        },
-        "rascildeconvolve1": {
-            "component": "rascil_deconvolve",
-            "metadata": {
-                "label": "RASCIL Deconvolve",
-                "x": 1603.9999952316284,
-                "y": 109.49999904632568,
-                "height": 80,
-                "width": 120,
-                "extensible": true,
-                "config": {}
-            }
-        },
-        "rascildeconvolve2": {
-            "component": "rascil_deconvolve",
-            "metadata": {
-                "label": "RASCIL Deconvolve",
-                "x": 1603.9999952316284,
-                "y": 229.49999904632568,
+                "x": 2334.999991416931,
+                "y": 177.99999952316284,
                 "height": 80,
                 "width": 120,
                 "extensible": true,
@@ -221,8 +113,152 @@
             "component": "com.sap.system.multiplexer.1-3",
             "metadata": {
                 "label": "1:3 Multiplexer",
-                "x": 720,
-                "y": 109.49999904632568,
+                "x": 1185.9999961853027,
+                "y": 103.49999976158142,
+                "height": 80,
+                "width": 120,
+                "extensible": true,
+                "config": {}
+            }
+        },
+        "rascilcreategleammodel1": {
+            "component": "rascil_gleam_model",
+            "metadata": {
+                "label": "RASCIL Create GLEAM Model",
+                "x": 984.999997138977,
+                "y": 229.49999952316284,
+                "height": 80,
+                "width": 120,
+                "extensible": true,
+                "config": {}
+            }
+        },
+        "rascilcreateimagefromvisibilities1": {
+            "component": "rascil_create_image_from_vis",
+            "metadata": {
+                "label": "RASCIL Create Image From Visibilities",
+                "x": 984.999997138977,
+                "y": 109.49999952316284,
+                "height": 80,
+                "width": 120,
+                "extensible": true,
+                "config": {}
+            }
+        },
+        "14multiplexer1": {
+            "component": "com.sap.system.multiplexer.1-4",
+            "metadata": {
+                "label": "1:4 Multiplexer",
+                "x": 350,
+                "y": 176.99999952316284,
+                "height": 82,
+                "width": 120,
+                "extensible": true,
+                "config": {}
+            }
+        },
+        "rascilpredictvisibilities1": {
+            "component": "rascil_predict_visibility",
+            "metadata": {
+                "label": "RASCIL Predict Visibilities",
+                "x": 1185.9999961853027,
+                "y": 223.49999976158142,
+                "height": 80,
+                "width": 120,
+                "extensible": true,
+                "config": {}
+            }
+        },
+        "rascilinvertvisibilities2": {
+            "component": "rascil_invert_visibilities",
+            "metadata": {
+                "label": "RASCIL Create PSF",
+                "x": 1667.999994277954,
+                "y": 194.99999952316284,
+                "height": 80,
+                "width": 120,
+                "extensible": true,
+                "config": {}
+            }
+        },
+        "rasciladvisewidefield1": {
+            "component": "rascil_advise_imaging",
+            "metadata": {
+                "label": "RASCIL Advise Wide Field",
+                "x": 566.9999990463257,
+                "y": 209.49999928474426,
+                "height": 80,
+                "width": 120,
+                "extensible": true,
+                "config": {}
+            }
+        },
+        "rascilinvertvisibilities1": {
+            "component": "rascil_invert_visibilities",
+            "metadata": {
+                "label": "RASCIL Invert Visibilities",
+                "x": 1667.999994277954,
+                "y": 314.99999952316284,
+                "height": 80,
+                "width": 120,
+                "extensible": true,
+                "config": {}
+            }
+        },
+        "rascilinvertvisibilities3": {
+            "component": "rascil_invert_visibilities",
+            "metadata": {
+                "label": "RASCIL Invert Visibilities",
+                "x": 1900.9999933242798,
+                "y": 126.49999952316284,
+                "height": 80,
+                "width": 120,
+                "extensible": true,
+                "config": {}
+            }
+        },
+        "14multiplexer2": {
+            "component": "com.sap.system.multiplexer.1-4",
+            "metadata": {
+                "label": "1:4 Multiplexer",
+                "x": 751.9999980926514,
+                "y": 208.49999928474426,
+                "height": 82,
+                "width": 120,
+                "extensible": true,
+                "config": {}
+            }
+        },
+        "13multiplexer4": {
+            "component": "com.sap.system.multiplexer.1-3",
+            "metadata": {
+                "label": "1:3 Multiplexer",
+                "x": 1402.9999952316284,
+                "y": 320.99999928474426,
+                "height": 80,
+                "width": 120,
+                "extensible": true,
+                "config": {}
+            }
+        },
+        "rascildeconvolve1": {
+            "component": "rascil_deconvolve",
+            "metadata": {
+                "label": "RASCIL Deconvolve",
+                "x": 2149.9999923706055,
+                "y": 117.99999952316284,
+                "height": 80,
+                "width": 120,
+                "extensible": true,
+                "config": {}
+            }
+        },
+        "rascildeconvolve2": {
+            "component": "rascil_deconvolve",
+            "metadata": {
+                "label": "RASCIL Deconvolve",
+                "x": 2149.9999923706055,
+                "y": 237.99999952316284,
                 "height": 80,
                 "width": 120,
                 "extensible": true,
@@ -234,7 +270,7 @@
     "connections": [
         {
             "metadata": {
-                "points": "2027.9999933242798,209.49999904632568 2067.99999332428,209.49999904632568"
+                "points": "2573.999990463257,217.99999952316284 2613.999990463257,217.99999952316284"
             },
             "src": {
                 "port": "outstring",
@@ -247,7 +283,7 @@
         },
         {
             "metadata": {
-                "points": "136,209.49999904632568 176,209.49999904632568"
+                "points": "136,217.99999952316284 176,217.99999952316284"
             },
             "src": {
                 "port": "output",
@@ -260,98 +296,7 @@
         },
         {
             "metadata": {
-                "points": "674.9999990463257,269.4999990463257 714.9999990463257,269.4999990463257"
-            },
-            "src": {
-                "port": "output",
-                "process": "rascilcreategleammodel1"
-            },
-            "tgt": {
-                "port": "input",
-                "process": "rascilpredictvisibilities1"
-            }
-        },
-        {
-            "metadata": {
-                "points": "305,209.49999904632568 345,209.49999904632568"
-            },
-            "src": {
-                "port": "output",
-                "process": "rascilsimulateobservation1"
-            },
-            "tgt": {
-                "port": "in1",
-                "process": "12multiplexer1"
-            }
-        },
-        {
-            "metadata": {
-                "points": "474,200.49999904632568 517.9999995231628,200.49999904632568 517.9999995231628,269.4999990463257 545.9999990463257,269.4999990463257"
-            },
-            "src": {
-                "port": "out1",
-                "process": "12multiplexer1"
-            },
-            "tgt": {
-                "port": "input",
-                "process": "rascilcreategleammodel1"
-            }
-        },
-        {
-            "metadata": {
-                "points": "474,218.49999904632568 501.99999952316284,218.49999904632568 501.99999952316284,149.49999904632568 545.9999990463257,149.49999904632568"
-            },
-            "src": {
-                "port": "out2",
-                "process": "12multiplexer1"
-            },
-            "tgt": {
-                "port": "input",
-                "process": "rascilcreateimagefromvisibilities1"
-            }
-        },
-        {
-            "metadata": {
-                "points": "843.9999990463257,269.4999990463257 915.9999980926514,269.4999990463257"
-            },
-            "src": {
-                "port": "output",
-                "process": "rascilpredictvisibilities1"
-            },
-            "tgt": {
-                "port": "in1",
-                "process": "13multiplexer1"
-            }
-        },
-        {
-            "metadata": {
-                "points": "1044.9999980926514,287.4999990463257 1168.9999976158142,287.4999990463257 1168.9999976158142,226.99999856948853 1196.999997138977,226.99999856948853"
-            },
-            "src": {
-                "port": "out3",
-                "process": "13multiplexer1"
-            },
-            "tgt": {
-                "port": "inputvislist",
-                "process": "rascilinvertvisibilities2"
-            }
-        },
-        {
-            "metadata": {
-                "points": "1044.9999980926514,269.4999990463257 1088.9999976158142,269.4999990463257 1088.9999976158142,346.9999985694885 1196.999997138977,346.9999985694885"
-            },
-            "src": {
-                "port": "out2",
-                "process": "13multiplexer1"
-            },
-            "tgt": {
-                "port": "inputvislist",
-                "process": "rascilinvertvisibilities1"
-            }
-        },
-        {
-            "metadata": {
-                "points": "1044.9999980926514,251.49999904632568 1152.9999976158142,251.49999904632568 1152.9999976158142,80.99999952316284 1196.999997138977,80.99999952316284"
+                "points": "1526.9999952316284,222.99999928474426 1618.9999947547913,222.99999928474426 1618.9999947547913,114.99999952316284 1662.999994277954,114.99999952316284"
             },
             "src": {
                 "port": "out1",
@@ -364,72 +309,7 @@
         },
         {
             "metadata": {
-                "points": "1325.999997138977,80.99999952316284 1353.99999666214,80.99999952316284 1353.99999666214,126.99999976158142 1397.9999961853027,126.99999976158142"
-            },
-            "src": {
-                "port": "output",
-                "process": "rascilcorruptvisibilities1"
-            },
-            "tgt": {
-                "port": "inputvislist",
-                "process": "rascilinvertvisibilities3"
-            }
-        },
-        {
-            "metadata": {
-                "points": "1044.9999980926514,131.49999904632568 1120.9999976158142,131.49999904632568 1120.9999976158142,208.99999856948853 1196.999997138977,208.99999856948853"
-            },
-            "src": {
-                "port": "out1",
-                "process": "13multiplexer2"
-            },
-            "tgt": {
-                "port": "inputmodel",
-                "process": "rascilinvertvisibilities2"
-            }
-        },
-        {
-            "metadata": {
-                "points": "1044.9999980926514,149.49999904632568 1104.9999976158142,149.49999904632568 1104.9999976158142,328.9999985694885 1196.999997138977,328.9999985694885"
-            },
-            "src": {
-                "port": "out2",
-                "process": "13multiplexer2"
-            },
-            "tgt": {
-                "port": "inputmodel",
-                "process": "rascilinvertvisibilities1"
-            }
-        },
-        {
-            "metadata": {
-                "points": "1044.9999980926514,167.49999904632568 1072.9999976158142,167.49999904632568 1072.9999976158142,12 1369.99999666214,12 1369.99999666214,108.99999976158142 1397.9999961853027,108.99999976158142"
-            },
-            "src": {
-                "port": "out3",
-                "process": "13multiplexer2"
-            },
-            "tgt": {
-                "port": "inputmodel",
-                "process": "rascilinvertvisibilities3"
-            }
-        },
-        {
-            "metadata": {
-                "points": "1325.999997138977,217.99999856948853 1353.99999666214,217.99999856948853 1353.99999666214,254.9999988079071 1397.9999961853027,254.9999988079071"
-            },
-            "src": {
-                "port": "output",
-                "process": "rascilinvertvisibilities2"
-            },
-            "tgt": {
-                "port": "in1",
-                "process": "12multiplexer2"
-            }
-        },
-        {
-            "metadata": {
-                "points": "1912.999994277954,209.49999904632568 1940.999993801117,209.49999904632568 1940.999993801117,200.49999904632568 1968.9999933242798,200.49999904632568"
+                "points": "2458.999991416931,217.99999952316284 2486.999990940094,217.99999952316284 2486.999990940094,208.99999952316284 2514.999990463257,208.99999952316284"
             },
             "src": {
                 "port": "output",
@@ -442,72 +322,7 @@
         },
         {
             "metadata": {
-                "points": "1526.9999961853027,117.99999976158142 1554.9999957084656,117.99999976158142 1554.9999957084656,131.49999904632568 1598.9999952316284,131.49999904632568"
-            },
-            "src": {
-                "port": "output",
-                "process": "rascilinvertvisibilities3"
-            },
-            "tgt": {
-                "port": "input_vis",
-                "process": "rascildeconvolve1"
-            }
-        },
-        {
-            "metadata": {
-                "points": "1526.9999961853027,245.9999988079071 1554.9999957084656,245.9999988079071 1554.9999957084656,149.49999904632568 1598.9999952316284,149.49999904632568"
-            },
-            "src": {
-                "port": "out1",
-                "process": "12multiplexer2"
-            },
-            "tgt": {
-                "port": "input_psf",
-                "process": "rascildeconvolve1"
-            }
-        },
-        {
-            "metadata": {
-                "points": "1325.999997138977,337.9999985694885 1353.99999666214,337.9999985694885 1353.99999666214,322.99999833106995 1554.9999957084656,322.99999833106995 1554.9999957084656,251.49999904632568 1598.9999952316284,251.49999904632568"
-            },
-            "src": {
-                "port": "output",
-                "process": "rascilinvertvisibilities1"
-            },
-            "tgt": {
-                "port": "input_vis",
-                "process": "rascildeconvolve2"
-            }
-        },
-        {
-            "metadata": {
-                "points": "1526.9999961853027,263.9999988079071 1570.9999957084656,263.9999988079071 1570.9999957084656,269.4999990463257 1598.9999952316284,269.4999990463257"
-            },
-            "src": {
-                "port": "out2",
-                "process": "12multiplexer2"
-            },
-            "tgt": {
-                "port": "input_psf",
-                "process": "rascildeconvolve2"
-            }
-        },
-        {
-            "metadata": {
-                "points": "674.9999990463257,149.49999904632568 714.9999990463257,149.49999904632568"
-            },
-            "src": {
-                "port": "output",
-                "process": "rascilcreateimagefromvisibilities1"
-            },
-            "tgt": {
-                "port": "in1",
-                "process": "13multiplexer3"
-            }
-        },
-        {
-            "metadata": {
-                "points": "843.9999990463257,167.49999904632568 887.9999985694885,167.49999904632568 887.9999985694885,149.49999904632568 915.9999980926514,149.49999904632568"
+                "points": "1309.9999961853027,161.49999976158142 1369.9999957084656,161.49999976158142 1369.9999957084656,120.99999928474426 1397.9999952316284,120.99999928474426"
             },
             "src": {
                 "port": "out3",
@@ -520,46 +335,384 @@
         },
         {
             "metadata": {
-                "points": "843.9999990463257,149.49999904632568 871.9999985694885,149.49999904632568 871.9999985694885,337.4999985694885 1072.9999976158142,337.4999985694885 1072.9999976158142,405.99999809265137 1369.99999666214,405.99999809265137 1369.99999666214,339.99999833106995 1570.9999957084656,339.99999833106995 1570.9999957084656,287.4999990463257 1598.9999952316284,287.4999990463257"
+                "points": "1108.999997138977,149.49999952316284 1136.99999666214,149.49999952316284 1136.99999666214,143.49999976158142 1180.9999961853027,143.49999976158142"
             },
             "src": {
-                "port": "out2",
-                "process": "13multiplexer3"
+                "port": "output",
+                "process": "rascilcreateimagefromvisibilities1"
             },
             "tgt": {
-                "port": "input_model",
-                "process": "rascildeconvolve2"
+                "port": "in1",
+                "process": "13multiplexer3"
             }
         },
         {
             "metadata": {
-                "points": "843.9999990463257,131.49999904632568 871.9999985694885,131.49999904632568 871.9999985694885,80.49999952316284 1136.9999976158142,80.49999952316284 1136.9999976158142,148.99999904632568 1353.99999666214,148.99999904632568 1353.99999666214,185.99999928474426 1570.9999957084656,185.99999928474426 1570.9999957084656,167.49999904632568 1598.9999952316284,167.49999904632568"
+                "points": "305,217.99999952316284 345,217.99999952316284"
+            },
+            "src": {
+                "port": "output",
+                "process": "rascilsimulateobservation1"
+            },
+            "tgt": {
+                "port": "in1",
+                "process": "14multiplexer1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "474,226.99999952316284 533.9999995231628,226.99999952316284 533.9999995231628,180.49999976158142 718.9999985694885,180.49999976158142 718.9999985694885,179.49999976158142 919.9999976158142,179.49999976158142 919.9999976158142,140.49999952316284 979.999997138977,140.49999952316284"
+            },
+            "src": {
+                "port": "out3",
+                "process": "14multiplexer1"
+            },
+            "tgt": {
+                "port": "inputvis",
+                "process": "rascilcreateimagefromvisibilities1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "474,208.99999952316284 517.9999995231628,208.99999952316284 517.9999995231628,163.49999976158142 718.9999985694885,163.49999976158142 718.9999985694885,162.49999976158142 951.9999976158142,162.49999976158142 951.9999976158142,260.49999952316284 979.999997138977,260.49999952316284"
+            },
+            "src": {
+                "port": "out2",
+                "process": "14multiplexer1"
+            },
+            "tgt": {
+                "port": "inputvis",
+                "process": "rascilcreategleammodel1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "1309.9999961853027,263.4999997615814 1337.9999957084656,263.4999997615814 1337.9999957084656,240.99999928474426 1397.9999952316284,240.99999928474426"
+            },
+            "src": {
+                "port": "output",
+                "process": "rascilpredictvisibilities1"
+            },
+            "tgt": {
+                "port": "in1",
+                "process": "13multiplexer1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "1108.999997138977,269.49999952316284 1136.99999666214,269.49999952316284 1136.99999666214,263.4999997615814 1180.9999961853027,263.4999997615814"
+            },
+            "src": {
+                "port": "output",
+                "process": "rascilcreategleammodel1"
+            },
+            "tgt": {
+                "port": "inputmodel",
+                "process": "rascilpredictvisibilities1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "474,190.99999952316284 501.99999952316284,190.99999952316284 501.99999952316284,146.49999976158142 718.9999985694885,146.49999976158142 718.9999985694885,145.49999976158142 903.9999976158142,145.49999976158142 903.9999976158142,80.5 1152.99999666214,80.5 1152.99999666214,245.49999976158142 1180.9999961853027,245.49999976158142"
+            },
+            "src": {
+                "port": "out1",
+                "process": "14multiplexer1"
+            },
+            "tgt": {
+                "port": "inputvis",
+                "process": "rascilpredictvisibilities1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "1526.9999952316284,102.99999928474426 1634.9999947547913,102.99999928474426 1634.9999947547913,216.99999952316284 1662.999994277954,216.99999952316284"
+            },
+            "src": {
+                "port": "out1",
+                "process": "13multiplexer2"
+            },
+            "tgt": {
+                "port": "inputmodel",
+                "process": "rascilinvertvisibilities2"
+            }
+        },
+        {
+            "metadata": {
+                "points": "1526.9999952316284,258.99999928474426 1554.9999947547913,258.99999928474426 1554.9999947547913,234.99999952316284 1662.999994277954,234.99999952316284"
+            },
+            "src": {
+                "port": "out3",
+                "process": "13multiplexer1"
+            },
+            "tgt": {
+                "port": "inputvis",
+                "process": "rascilinvertvisibilities2"
+            }
+        },
+        {
+            "metadata": {
+                "points": "474,244.99999952316284 501.99999952316284,244.99999952316284 501.99999952316284,249.49999928474426 561.9999990463257,249.49999928474426"
+            },
+            "src": {
+                "port": "out4",
+                "process": "14multiplexer1"
+            },
+            "tgt": {
+                "port": "input",
+                "process": "rasciladvisewidefield1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "1526.9999952316284,240.99999928474426 1570.9999947547913,240.99999928474426 1570.9999947547913,354.99999952316284 1662.999994277954,354.99999952316284"
+            },
+            "src": {
+                "port": "out2",
+                "process": "13multiplexer1"
+            },
+            "tgt": {
+                "port": "inputvis",
+                "process": "rascilinvertvisibilities1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "1526.9999952316284,120.99999928474426 1602.9999947547913,120.99999928474426 1602.9999947547913,336.99999952316284 1662.999994277954,336.99999952316284"
+            },
+            "src": {
+                "port": "out2",
+                "process": "13multiplexer2"
+            },
+            "tgt": {
+                "port": "inputmodel",
+                "process": "rascilinvertvisibilities1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "1791.999994277954,234.99999952316284 1835.999993801117,234.99999952316284 1835.999993801117,286.49999952316284 1895.9999933242798,286.49999952316284"
+            },
+            "src": {
+                "port": "output",
+                "process": "rascilinvertvisibilities2"
+            },
+            "tgt": {
+                "port": "in1",
+                "process": "12multiplexer2"
+            }
+        },
+        {
+            "metadata": {
+                "points": "1791.999994277954,114.99999952316284 1819.999993801117,114.99999952316284 1819.999993801117,166.49999952316284 1895.9999933242798,166.49999952316284"
+            },
+            "src": {
+                "port": "output",
+                "process": "rascilcorruptvisibilities1"
+            },
+            "tgt": {
+                "port": "inputvis",
+                "process": "rascilinvertvisibilities3"
+            }
+        },
+        {
+            "metadata": {
+                "points": "875.9999980926514,258.49999928474426 919.9999976158142,258.49999928474426 919.9999976158142,337.4999990463257 1136.99999666214,337.4999990463257 1136.99999666214,281.4999997615814 1180.9999961853027,281.4999997615814"
+            },
+            "src": {
+                "port": "out3",
+                "process": "14multiplexer2"
+            },
+            "tgt": {
+                "port": "inputadvice",
+                "process": "rascilpredictvisibilities1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "875.9999980926514,240.49999928474426 935.9999976158142,240.49999928474426 935.9999976158142,278.49999952316284 979.999997138977,278.49999952316284"
+            },
+            "src": {
+                "port": "out2",
+                "process": "14multiplexer2"
+            },
+            "tgt": {
+                "port": "inputadvice",
+                "process": "rascilcreategleammodel1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "875.9999980926514,222.49999928474426 935.9999976158142,222.49999928474426 935.9999976158142,158.49999952316284 979.999997138977,158.49999952316284"
+            },
+            "src": {
+                "port": "out1",
+                "process": "14multiplexer2"
+            },
+            "tgt": {
+                "port": "inputadvice",
+                "process": "rascilcreateimagefromvisibilities1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "875.9999980926514,276.49999928474426 903.9999976158142,276.49999928474426 903.9999976158142,354.4999990463257 1152.99999666214,354.4999990463257 1152.99999666214,331.49999928474426 1337.9999957084656,331.49999928474426 1337.9999957084656,360.99999928474426 1397.9999952316284,360.99999928474426"
+            },
+            "src": {
+                "port": "out4",
+                "process": "14multiplexer2"
+            },
+            "tgt": {
+                "port": "in1",
+                "process": "13multiplexer4"
+            }
+        },
+        {
+            "metadata": {
+                "points": "1526.9999952316284,342.99999928474426 1554.9999947547913,342.99999928474426 1554.9999947547913,422.9999990463257 1819.999993801117,422.9999990463257 1819.999993801117,184.49999952316284 1895.9999933242798,184.49999952316284"
+            },
+            "src": {
+                "port": "out1",
+                "process": "13multiplexer4"
+            },
+            "tgt": {
+                "port": "inputadvice",
+                "process": "rascilinvertvisibilities3"
+            }
+        },
+        {
+            "metadata": {
+                "points": "1526.9999952316284,360.99999928474426 1618.9999947547913,360.99999928474426 1618.9999947547913,252.99999952316284 1662.999994277954,252.99999952316284"
+            },
+            "src": {
+                "port": "out2",
+                "process": "13multiplexer4"
+            },
+            "tgt": {
+                "port": "inputadvice",
+                "process": "rascilinvertvisibilities2"
+            }
+        },
+        {
+            "metadata": {
+                "points": "1526.9999952316284,378.99999928474426 1570.9999947547913,378.99999928474426 1570.9999947547913,372.99999952316284 1662.999994277954,372.99999952316284"
+            },
+            "src": {
+                "port": "out3",
+                "process": "13multiplexer4"
+            },
+            "tgt": {
+                "port": "inputadvice",
+                "process": "rascilinvertvisibilities1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "1526.9999952316284,138.99999928474426 1586.9999947547913,138.99999928474426 1586.9999947547913,46 1835.999993801117,46 1835.999993801117,148.49999952316284 1895.9999933242798,148.49999952316284"
+            },
+            "src": {
+                "port": "out3",
+                "process": "13multiplexer2"
+            },
+            "tgt": {
+                "port": "inputmodel",
+                "process": "rascilinvertvisibilities3"
+            }
+        },
+        {
+            "metadata": {
+                "points": "690.9999990463257,249.49999928474426 746.9999980926514,249.49999928474426"
+            },
+            "src": {
+                "port": "output",
+                "process": "rasciladvisewidefield1"
+            },
+            "tgt": {
+                "port": "in1",
+                "process": "14multiplexer2"
+            }
+        },
+        {
+            "metadata": {
+                "points": "1309.9999961853027,125.49999976158142 1337.9999957084656,125.49999976158142 1337.9999957084656,34.99999976158142 1554.9999947547913,34.99999976158142 1554.9999947547913,12 1867.999993801117,12 1867.999993801117,80.5 2116.9999928474426,80.5 2116.9999928474426,175.99999952316284 2144.9999923706055,175.99999952316284"
             },
             "src": {
                 "port": "out1",
                 "process": "13multiplexer3"
             },
             "tgt": {
-                "port": "input_model",
+                "port": "inputmodel",
                 "process": "rascildeconvolve1"
             }
         },
         {
             "metadata": {
-                "points": "1727.9999952316284,149.49999904632568 1755.9999947547913,149.49999904632568 1755.9999947547913,200.49999904632568 1783.999994277954,200.49999904632568"
+                "points": "2024.9999933242798,166.49999952316284 2052.9999928474426,166.49999952316284 2052.9999928474426,139.99999952316284 2144.9999923706055,139.99999952316284"
             },
             "src": {
                 "port": "output",
-                "process": "rascildeconvolve1"
+                "process": "rascilinvertvisibilities3"
             },
             "tgt": {
-                "port": "image1",
-                "process": "rascilcompareimages1"
+                "port": "inputvis",
+                "process": "rascildeconvolve1"
             }
         },
         {
             "metadata": {
-                "points": "1727.9999952316284,269.4999990463257 1755.9999947547913,269.4999990463257 1755.9999947547913,218.49999904632568 1783.999994277954,218.49999904632568"
+                "points": "2024.9999933242798,277.49999952316284 2068.9999928474426,277.49999952316284 2068.9999928474426,157.99999952316284 2144.9999923706055,157.99999952316284"
+            },
+            "src": {
+                "port": "out1",
+                "process": "12multiplexer2"
+            },
+            "tgt": {
+                "port": "inputpsf",
+                "process": "rascildeconvolve1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "2024.9999933242798,295.49999952316284 2084.9999928474426,295.49999952316284 2084.9999928474426,277.99999952316284 2144.9999923706055,277.99999952316284"
+            },
+            "src": {
+                "port": "out2",
+                "process": "12multiplexer2"
+            },
+            "tgt": {
+                "port": "inputpsf",
+                "process": "rascildeconvolve2"
+            }
+        },
+        {
+            "metadata": {
+                "points": "1309.9999961853027,143.49999976158142 1353.9999957084656,143.49999976158142 1353.9999957084656,51.99999976158142 1570.9999947547913,51.99999976158142 1570.9999947547913,29 1851.999993801117,29 1851.999993801117,97.5 2100.9999928474426,97.5 2100.9999928474426,295.99999952316284 2144.9999923706055,295.99999952316284"
+            },
+            "src": {
+                "port": "out2",
+                "process": "13multiplexer3"
+            },
+            "tgt": {
+                "port": "inputmodel",
+                "process": "rascildeconvolve2"
+            }
+        },
+        {
+            "metadata": {
+                "points": "1791.999994277954,354.99999952316284 1835.999993801117,354.99999952316284 1835.999993801117,354.4999990463257 2116.9999928474426,354.4999990463257 2116.9999928474426,259.99999952316284 2144.9999923706055,259.99999952316284"
+            },
+            "src": {
+                "port": "output",
+                "process": "rascilinvertvisibilities1"
+            },
+            "tgt": {
+                "port": "inputvis",
+                "process": "rascildeconvolve2"
+            }
+        },
+        {
+            "metadata": {
+                "points": "2273.9999923706055,277.99999952316284 2301.9999918937683,277.99999952316284 2301.9999918937683,226.99999952316284 2329.999991416931,226.99999952316284"
             },
             "src": {
                 "port": "output",
@@ -567,6 +720,19 @@
             },
             "tgt": {
                 "port": "image2",
+                "process": "rascilcompareimages1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "2273.9999923706055,157.99999952316284 2301.9999918937683,157.99999952316284 2301.9999918937683,208.99999952316284 2329.999991416931,208.99999952316284"
+            },
+            "src": {
+                "port": "output",
+                "process": "rascildeconvolve1"
+            },
+            "tgt": {
+                "port": "image1",
                 "process": "rascilcompareimages1"
             }
         }

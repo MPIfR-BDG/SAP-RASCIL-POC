@@ -1,0 +1,46 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "http://sap.com/vflow/rascil_visibility_sim.configSchema.json",
+    "type": "object",
+    "properties": {
+        "codelanguage": {
+            "type": "string"
+        },
+        "antenna_configuration": {
+            "type": "string"
+        },
+        "frequency_hi_hz": {
+            "type": "number"
+        },
+        "frequency_low_hz": {
+            "type": "number"
+        },
+        "max_radius": {
+            "type": "number"
+        },
+        "n_frequency_windows": {
+            "type": "number"
+        },
+        "n_time_steps": {
+            "type": "number"
+        },
+        "phasecentre_dec_deg": {
+            "type": "number"
+        },
+        "phasecentre_epoch": {
+            "type": "string"
+        },
+        "phasecentre_frame": {
+            "type": "string"
+        },
+        "phasecentre_ra_deg": {
+            "type": "number"
+        },
+        "scriptReference": {
+            "type": "string"
+        },
+        "script": {
+            "type": "string"
+        }
+    }
+}
