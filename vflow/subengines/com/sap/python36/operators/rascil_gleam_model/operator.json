@@ -24,5 +24,8 @@
         "flux_limit": 1,
         "script": "file://script.py",
         "scriptReference": "script.py"
+    },
+    "tags": {
+        "rascilfull": ""
     }
 }
