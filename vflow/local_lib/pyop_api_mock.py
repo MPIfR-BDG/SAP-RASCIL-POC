@@ -37,6 +37,8 @@ class API:
         self.logger.debug = self._debug
         self.logger.warn = self._warn
         self.logger.error = self._error
+        self.__shutdown_handlers = []
+        self.add_shutdown_handler = self.__add_shutdown_handler
 
     def add_shutdown_handler(self, *args, **kwargs):
         pass
@@ -95,6 +97,11 @@ class API:
     def _error(self, message):
         print(message)
 
+    def __add_shutdown_handler(self, handler):
+        #check_callback_n_args(handler, expected_n_args=0,
+         #                     callable_error_msg=u"The generator should be callable.",
+          #                    n_args_error_template=u"The number of arguments in the generator (%d) should be %d.")
+        self.__shutdown_handlers.append(handler)
 
 api = API()
 api.Message = _Message

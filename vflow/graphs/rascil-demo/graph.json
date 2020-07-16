@@ -178,7 +178,9 @@
                 "height": 80,
                 "width": 120,
                 "extensible": true,
-                "config": {}
+                "config": {
+                    "dopsf": true
+                }
             }
         },
         "rasciladvisewidefield1": {
