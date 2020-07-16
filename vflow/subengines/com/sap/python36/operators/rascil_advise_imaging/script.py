@@ -1,25 +1,45 @@
+try:
+    api
+except NameError:
+    from pyop_api_mock import api
+    api.config.delA = 0.02
+    api.config.guard_band_image = 8
+    api.config.wprojection_planes = 1
+
+
+
+# ////////////////////////////////////////////////////////
+
+
 import pickle
 from rascil.processing_components.imaging import advise_wide_field
 
 log = api.logger
 log.info("Starting advise wide field operator")
 
+log.debug("api configuration variables:")
+log.debug("delA = {}".format(api.config.delA))
+log.debug("guard_band_image = {}".format(api.config.guard_band_image))
+log.debug("wprojection_planes = {}".format(api.config.wprojection_planes))
 
 def execute(vis_pickle):
     log.debug("Executing advise wide field")
     vis_list = pickle.loads(vis_pickle)
-
+    log.debug("vis_list size = {}".format(len(vis_list)))
     wprojection_planes = api.config.wprojection_planes
+    log.debug("wprojection_planes = {}".format(wprojection_planes))
     advice_low = advise_wide_field(
         vis_list[0],
         guard_band_image=api.config.guard_band_image,
         delA=api.config.delA,
         wprojection_planes=wprojection_planes)
+    log.debug("advice_low = {}".format(advice_low))
     advice_high = advise_wide_field(
         vis_list[-1],
         guard_band_image=api.config.guard_band_image,
         delA=api.config.delA,
         wprojection_planes=wprojection_planes)
+    log.debug("advice_high = {}".format(advice_high))
     advice = {
         "low": advice_low,
         "high": advice_high,
@@ -29,7 +49,20 @@ def execute(vis_pickle):
     }
     api.send("output", pickle.dumps(advice))
 
-
-api.add_shutdown_handler(lambda: log.info(
-    "Shutting down advise wide field operator"))
+#api.add_shutdown_handler(lambda: log.info(
+#    "Shutting down advise wide field operator"))
 api.set_port_callback("input", execute)
+
+# ////////////////////////////////////////////////////////
+
+if __name__ == "__main__":
+    print('Test: Default')
+    file = open("vislist.pickle", "rb")
+    vis_pickle = pickle.load(file)
+    file.close()
+    api.test.write("input",pickle.dumps(vis_pickle))
+    while api.test.hasnext("output"):
+        advice_pickle = api.test.read("output")
+        advice = pickle.loads(advice_pickle)
+        print(str(advice))
+

@@ -17,8 +17,8 @@
     "iconsrc": "python.svg",
     "config": {
         "$type": "http://sap.com/vflow/rascil_advise_imaging.configSchema.json",
-        "delA": 0,
-        "guard_band_image": 0,
+        "delA": 0.02,
+        "guard_band_image": 8,
         "script": "file://script.py",
         "scriptReference": "script.py",
         "wprojection_planes": 1

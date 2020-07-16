@@ -92,3 +92,6 @@ if __name__ == "__main__":
         print(str(vis_list))
         for vis in vis_list:
             print(str(vis))
+        pickle_file = open("vislist.pickle", "wb")
+        pickle.dump(vis_list, pickle_file)
+        pickle_file.close()

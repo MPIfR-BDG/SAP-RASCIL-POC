@@ -3,6 +3,10 @@ launchpad/
 vflow/general/
 .repoid
 
+# vi text editor
+*~
+*.swp
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
