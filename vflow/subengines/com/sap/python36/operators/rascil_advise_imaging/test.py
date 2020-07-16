@@ -9,7 +9,7 @@ script = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(script)
 
 
-class TestVisibilitySim(unittest.TestCase):
+class TestAdviceImaging(unittest.TestCase):
     def setUp(self):
         self.api = API()
         self.api.Message = _Message
@@ -33,4 +33,3 @@ class TestVisibilitySim(unittest.TestCase):
             advice_pickle = self.api.test.read("output")
             advice = pickle.loads(advice_pickle)
             print(str(advice))
-
