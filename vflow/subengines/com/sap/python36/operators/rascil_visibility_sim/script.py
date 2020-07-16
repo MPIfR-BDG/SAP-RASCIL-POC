@@ -66,7 +66,7 @@ def wrapper(api):
 try:
     api
 except NameError:
-    print("No api object found...")
-    pass
+    if __name__ == "__main__":
+        print("Error: No api object found")
 else:
     wrapper(api)

@@ -13,11 +13,6 @@ class TestVisibilitySim(unittest.TestCase):
     def setUp(self):
         self.api = API()
         self.api.Message = _Message
-
-    def tearDown(self):
-        pass
-
-    def test_default_config(self):
         self.api.config.antenna_configuration = "LOWBD2"
         self.api.config.frequency_hi_hz = 120000000
         self.api.config.frequency_low_hz = 100000000
@@ -28,6 +23,11 @@ class TestVisibilitySim(unittest.TestCase):
         self.api.config.phasecentre_epoch = "J2000"
         self.api.config.phasecentre_frame = "icrs"
         self.api.config.phasecentre_ra_deg = 30
+
+    def tearDown(self):
+        pass
+
+    def test_default_config(self):
         script.wrapper(self.api)
 
         print('Test: Default')
