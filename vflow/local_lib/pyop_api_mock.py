@@ -1,5 +1,5 @@
-from collections import deque
 import threading
+from collections import deque
 
 
 class _Message:
@@ -37,6 +37,9 @@ class API:
         self.logger.debug = self._debug
         self.logger.warn = self._warn
         self.logger.error = self._error
+
+    def add_shutdown_handler(self, *args, **kwargs):
+        pass
 
     def tick(self, time, func):
         if self.stopTimer:

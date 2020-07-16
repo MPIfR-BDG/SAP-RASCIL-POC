@@ -20,7 +20,6 @@ def wrapper(api):
         log.debug("Executing GLEAM model generation")
         vis_list = pickle.loads(vis_pickle)
         advice = pickle.loads(advice_pickle)
-        vis_slices = advice['vis_slices']
         npixel = advice['npixels2']
         cellsize = advice['cellsize']
         gleam_model = []

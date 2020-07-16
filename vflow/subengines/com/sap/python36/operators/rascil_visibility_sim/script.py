@@ -56,11 +56,9 @@ def wrapper(api):
         log.debug("Visibility simulation complete")
         api.send("output", pickle.dumps(vis_list))
 
-    # api.add_shutdown_handler(lambda: log.info(
-    #    "Shutting down visibility simulation operator"))
+    api.add_shutdown_handler(lambda: log.info(
+        "Shutting down visibility simulation operator"))
     api.set_port_callback("input", execute)
-
-# ////////////////////////////////////////////////////////
 
 
 try:
