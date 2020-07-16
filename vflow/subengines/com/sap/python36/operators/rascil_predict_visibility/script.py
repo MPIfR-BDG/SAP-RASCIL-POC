@@ -12,9 +12,9 @@ def execute(vis_pickle, model_pickle, advice_pickle):
     model_list = pickle.loads(model_pickle)
     advice = pickle.loads(advice_pickle)
     predicted_vislist = predict_list_serial_workflow(
-        vis_list, 
-        model_list,  
-        context='wstack', 
+        vis_list,
+        model_list,
+        context='wstack',
         vis_slices=advice["vis_slices"])
     api.send("output", pickle.dumps(predicted_vislist))
 

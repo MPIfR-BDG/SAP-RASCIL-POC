@@ -8,6 +8,7 @@ from rascil.processing_components.simulation import (
 log = api.logger
 log.info("Starting GLEAM model generation operator")
 
+
 def execute(vis_pickle, advice_pickle):
     """
     @brief   Create a visibility set based on the operator configuration
@@ -22,7 +23,7 @@ def execute(vis_pickle, advice_pickle):
     advice = pickle.loads(advice_pickle)
     vis_slices = advice['vis_slices']
     npixel = advice['npixels2']
-    cellsize = advice['cellsize'] 
+    cellsize = advice['cellsize']
     gleam_model = []
     for vis in vis_list:
         gleam_model.append(
@@ -36,6 +37,7 @@ def execute(vis_pickle, advice_pickle):
                 flux_limit=api.config.flux_limit,
                 applybeam=True))
     api.send("output", pickle.dumps(gleam_model))
+
 
 api.add_shutdown_handler(lambda: log.info(
     "Shutting down GLEAM model generation operator"))

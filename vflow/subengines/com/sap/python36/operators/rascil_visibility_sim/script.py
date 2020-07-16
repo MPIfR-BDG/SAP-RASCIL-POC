@@ -49,9 +49,9 @@ def execute(config_json):
         get_param("frequency_low_hz"),
         get_param("frequency_hi_hz"),
         get_param("n_frequency_windows"))
-    bw = (frequency[1]-frequency[0])
+    bw = (frequency[1] - frequency[0])
     channel_bandwidth = np.ones(get_param("n_frequency_windows")) * bw
-    times = np.linspace(-np.pi/3.0, np.pi/3.0, get_param("n_time_steps"))
+    times = np.linspace(-np.pi / 3.0, np.pi / 3.0, get_param("n_time_steps"))
     phasecentre = SkyCoord(
         ra=get_param("phasecentre_ra_deg") * u.deg,
         dec=get_param("phasecentre_dec_deg") * u.deg,
@@ -74,7 +74,7 @@ def execute(config_json):
     api.send("output", pickle.dumps(vis_list))
 
 
-#api.add_shutdown_handler(lambda: log.info(
+# api.add_shutdown_handler(lambda: log.info(
 #    "Shutting down visibility simulation operator"))
 api.set_port_callback("input", execute)
 
@@ -84,7 +84,7 @@ api.set_port_callback("input", execute)
 if __name__ == "__main__":
     print('Test: Default')
     print(api.config)
-    api.test.write("input","{}") # empty json input
+    api.test.write("input", "{}")  # empty json input
     while api.test.hasnext("output"):
         vis_pickle = api.test.read("output")
         vis_list = pickle.loads(vis_pickle)

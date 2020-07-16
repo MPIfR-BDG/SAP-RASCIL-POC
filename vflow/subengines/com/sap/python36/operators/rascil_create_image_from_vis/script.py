@@ -1,6 +1,6 @@
 import pickle
 from rascil.data_models.polarisation import PolarisationFrame
-from rascil.processing_components.imaging import  create_image_from_visibility
+from rascil.processing_components.imaging import create_image_from_visibility
 
 
 log = api.logger
@@ -28,6 +28,7 @@ def execute(vis_pickle, advice_pickle):
             )
         )
     api.send("output", pickle.dumps(model_list))
+
 
 api.add_shutdown_handler(lambda: log.info(
     "Shutting down model creation operator"))
