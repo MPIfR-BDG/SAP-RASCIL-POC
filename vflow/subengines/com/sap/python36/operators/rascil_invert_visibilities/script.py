@@ -5,10 +5,10 @@ from rascil.workflows.serial.imaging.imaging_serial import (
 
 def wrapper(api):
     log = api.logger
-    log.info("Starting PSF creation operator")
+    log.info("Starting visibility inversion operator")
 
     def execute(model_pickle, vis_pickle, advice_pickle):
-        log.debug("Executing visibility prediction")
+        log.debug("Executing visibility inversion")
         model_list = pickle.loads(model_pickle)
         vis_list = pickle.loads(vis_pickle)
         advice = pickle.loads(advice_pickle)
@@ -21,7 +21,7 @@ def wrapper(api):
         api.send("output", pickle.dumps(image_list))
 
     api.add_shutdown_handler(lambda: log.info(
-        "Shutting down visibility prediction operator"))
+        "Shutting down visibility inversion operator"))
     api.set_port_callback(["inputmodel", "inputvis", "inputadvice"], execute)
 
 

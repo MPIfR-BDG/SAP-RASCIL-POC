@@ -1,10 +1,10 @@
 import pickle
 from rascil.processing_components.imaging import advise_wide_field
 
+
 def wrapper(api):
     log = api.logger
     log.info("Starting advise wide field operator")
-
     log.debug("api configuration variables:")
     log.debug("delA = {}".format(api.config.delA))
     log.debug("guard_band_image = {}".format(api.config.guard_band_image))
@@ -29,19 +29,16 @@ def wrapper(api):
             wprojection_planes=wprojection_planes)
         log.debug("advice_high = {}".format(advice_high))
         advice = {
-#            "low": advice_low,
-#            "high": advice_high,
             "vis_slices": advice_low['vis_slices'],
             "npixel": advice_high['npixels2'],
             "cellsize": min(advice_low['cellsize'], advice_high['cellsize'])
         }
         api.send("output", pickle.dumps(advice))
 
-    #api.add_shutdown_handler(lambda: log.info(
-    #    "Shutting down advise wide field operator"))
-    api.set_port_callback("input", execute)
+    api.add_shutdown_handler(lambda: log.info(
+        "Shutting down advise wide field operator"))
+    api.set_port_callback(["input"], execute)
 
-# ////////////////////////////////////////////////////////
 
 try:
     api

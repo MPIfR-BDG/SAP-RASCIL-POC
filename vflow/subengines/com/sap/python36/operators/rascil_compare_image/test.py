@@ -1,39 +1,21 @@
-import unittest
 import pickle
-import importlib.util
-from pyop_api_mock import API, _Message
-
-spec = importlib.util.spec_from_file_location(
-    "script", __file__.replace("test.py", "script.py"))
-script = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(script)
+import os
+from rascil_test_helper import BaseRascilTest
 
 
-class TestCompareImage(unittest.TestCase):
-    def setUp(self):
-        self.api = API()
-        self.api.Message = _Message
-
-    def tearDown(self):
-        pass
+class TestCompareImage(BaseRascilTest):
+    _data_path = os.path.dirname(__file__)
 
     def test_default_config(self):
-        script.wrapper(self.api)
+        self.script.wrapper(self.api)
+        self.log_config()
 
-        print('Test: Default')
-        print(self.api.config)
-
-        file_image1 = open(__file__.replace("test.py", "test_image1.pickle"), "rb")
-        image1_pickle = pickle.load(file_image1)
-        file_image1.close()
-
-        file_image2 = open(__file__.replace("test.py", "test_image2.pickle"), "rb")
-        image2_pickle = pickle.load(file_image2)
-        file_image2.close()
-
-        self.api.test.write(["image1","image2"],(pickle.dumps(image1_pickle),pickle.dumps(image2_pickle)))
+        self.pickles_to_ports(
+            ["image1", "image2"],
+            [self.get_path("test_image1.pickle"),
+             self.get_path("test_image2.pickle")])
 
         while self.api.test.hasnext("output"):
             comp_pickle = self.api.test.read("output")
             comp = pickle.loads(comp_pickle)
-            print(str(comp))
+            self.api.logger.info("Image comparison {}".format(comp))

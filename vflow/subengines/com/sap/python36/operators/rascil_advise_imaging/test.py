@@ -1,35 +1,24 @@
-import unittest
 import pickle
-import importlib.util
-from pyop_api_mock import API, _Message
-
-spec = importlib.util.spec_from_file_location(
-    "script", __file__.replace("test.py", "script.py"))
-script = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(script)
+import os
+from rascil_test_helper import BaseRascilTest
 
 
-class TestAdviceImaging(unittest.TestCase):
+class TestAdviseImaging(BaseRascilTest):
+    _data_path = os.path.dirname(__file__)
+
     def setUp(self):
-        self.api = API()
-        self.api.Message = _Message
+        super(TestAdviseImaging, self).setUp()
         self.api.config.delA = 0.02
         self.api.config.guard_band_image = 8
         self.api.config.wprojection_planes = 1
 
-    def tearDown(self):
-        pass
-
     def test_default_config(self):
-        script.wrapper(self.api)
+        self.script.wrapper(self.api)
+        self.log_config()
+        self.pickles_to_ports(
+            ["input"], [self.get_path("vislist.pickle")])
 
-        print('Test: Default')
-        print(self.api.config)
-        file = open(__file__.replace("test.py", "vislist.pickle"), "rb")
-        vis_pickle = pickle.load(file)
-        file.close()
-        self.api.test.write("input",pickle.dumps(vis_pickle))
         while self.api.test.hasnext("output"):
             advice_pickle = self.api.test.read("output")
             advice = pickle.loads(advice_pickle)
-            print(str(advice))
+            self.api.logger.info("Imaging advice: {}".format(advice))

@@ -15,10 +15,10 @@ def wrapper(api):
             phase_error=api.config.phase_error)
         api.send("output", pickle.dumps(corrupted_vislist))
 
-    #api.add_shutdown_handler(lambda: log.info(
-        #"Shutting down visibility corruption operator"))
+    api.add_shutdown_handler(lambda: log.info(
+        "Shutting down visibility corruption operator"))
 
-    api.set_port_callback("input", execute)
+    api.set_port_callback(["input"], execute)
 
 # ////////////////////////////////////////////////////////
 

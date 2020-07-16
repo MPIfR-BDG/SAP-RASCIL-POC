@@ -1,57 +1,37 @@
-import unittest
+import os
 import pickle
-import importlib.util
-from pyop_api_mock import API, _Message
+from rascil_test_helper import BaseRascilTest
 
 
-def get_path(file):
-    return __file__.replace("test.py", file)
+class TestDeconvolve(BaseRascilTest):
+    _data_path = os.path.dirname(__file__)
 
-
-spec = importlib.util.spec_from_file_location(
-    "script", get_path("script.py"))
-script = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(script)
-
-
-class TestDeconvolve(unittest.TestCase):
     def setUp(self):
-        self.api = API()
-        self.api.Message = _Message
+        super(TestDeconvolve, self).setUp()
         self.api.config.flux_limit = 1
-        self.api.config.algorithm = "msclean",
-        self.api.config.deconvolve_facets = 8,
-        self.api.config.deconvolve_overlap = 16,
-        self.api.config.deconvolve_taper = "tukey",
-        self.api.config.fractional_threshold = 0,
-        self.api.config.gain = 0,
-        self.api.config.niter = 1000,
-        self.api.config.psf_support = 64,
-        self.api.config.scales = [0, 3, 10],
-        self.api.config.threshold = 0
-
-    def pickles_to_ports(self, ports, pickle_files):
-        def read(pickle_file):
-            with open(pickle_file, "rb") as f:
-                return f.read()
-        self.api.test.write(ports, [read(i) for i in pickle_files])
+        self.api.config.algorithm = "msclean"
+        self.api.config.deconvolve_facets = 8
+        self.api.config.deconvolve_overlap = 16
+        self.api.config.deconvolve_taper = "tukey"
+        self.api.config.fractional_threshold = 0.5
+        self.api.config.gain = 1.0
+        self.api.config.niter = 1000
+        self.api.config.psf_support = 64
+        self.api.config.scales = [0, 3, 10]
+        self.api.config.threshold = 0.5
 
     def test_default_config(self):
-        print('Test: Default')
-        print(self.api.config)
-        script.wrapper(self.api)
+        self.log_config()
+        self.script.wrapper(self.api)
         self.pickles_to_ports(
             ["inputimage", "inputpsf", "inputmodel"],
-            [get_path("imagelist.pickle"),
-             get_path("psflist.pickle"),
-             get_path("modellist.pickle")])
+            [self.get_path("image_list.pickle"),
+             self.get_path("psf_list.pickle"),
+             self.get_path("model_list.pickle")])
 
         while self.api.test.hasnext("output"):
             image_pickle = self.api.test.read("output")
             image_list = pickle.loads(image_pickle)
-            print(str(len(image_list)))
-            print(str(image_list))
-            for image in image_list:
-                print(str(image))
-            with open(get_path("imagelist_out.pickle"), "wb") as f:
+            self.api.logger.info("{} images returned".format(len(image_list)))
+            with open(self.get_path("imagelist_out.pickle"), "wb") as f:
                 pickle.dump(image_list, f)
