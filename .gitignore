@@ -7,6 +7,10 @@ vflow/general/
 *~
 *.swp
 
+# emacs text editor
+\#*\#
+.\#*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
