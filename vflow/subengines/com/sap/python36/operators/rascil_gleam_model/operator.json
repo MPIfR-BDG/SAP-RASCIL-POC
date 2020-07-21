@@ -21,7 +21,7 @@
     "iconsrc": "python.svg",
     "config": {
         "$type": "http://sap.com/vflow/rascil_gleam_model.configSchema.json",
-        "flux_limit": 1,
+        "flux_limit": 1.0,
         "script": "file://script.py",
         "scriptReference": "script.py"
     },

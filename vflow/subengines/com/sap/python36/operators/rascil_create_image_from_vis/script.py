@@ -32,8 +32,8 @@ def wrapper(api):
         api.send("output", pickle.dumps(model_list))
 
 
-    #api.add_shutdown_handler(lambda: log.info(
-        #"Shutting down model creation operator"))
+    api.add_shutdown_handler(lambda: log.info(
+        "Shutting down model creation operator"))
     api.set_port_callback(["inputvis", "inputadvice"], execute)
 
 
