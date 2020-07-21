@@ -1,5 +1,8 @@
 import pickle
-from rascil.processing_components.imaging import advise_wide_field
+from rascil.workflows.serial.simulation.simulation_serial import (
+    simulate_list_serial_workflow)
+from rascil.processing_components.imaging import (
+    advise_wide_field)
 
 
 def wrapper(api):
