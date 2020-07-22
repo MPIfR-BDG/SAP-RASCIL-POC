@@ -1,0 +1,61 @@
+{
+    "properties": {},
+    "description": "test RASCIL Vis Sim",
+    "processes": {
+        "rascilsimulateobservation1": {
+            "component": "rascil_visibility_sim",
+            "metadata": {
+                "label": "RASCIL Simulate Observation",
+                "x": 241.99999904632568,
+                "y": 39.99999952316284,
+                "height": 80,
+                "width": 120,
+                "extensible": true,
+                "config": {}
+            }
+        },
+        "terminal1": {
+            "component": "com.sap.util.terminal",
+            "metadata": {
+                "label": "Terminal",
+                "x": 72.99999904632568,
+                "y": 40,
+                "height": 80,
+                "width": 120,
+                "ui": "dynpath",
+                "config": {}
+            }
+        }
+    },
+    "groups": [],
+    "connections": [
+        {
+            "metadata": {
+                "points": "365.9999990463257,79.99999952316284 393.9999985694885,79.99999952316284 393.9999985694885,12 12,12 12,79.99999952316284 67.99999904632568,79.99999952316284"
+            },
+            "src": {
+                "port": "output",
+                "process": "rascilsimulateobservation1"
+            },
+            "tgt": {
+                "port": "in1",
+                "process": "terminal1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "196.99999904632568,79.99999952316284 236.99999904632568,79.99999952316284"
+            },
+            "src": {
+                "port": "out1",
+                "process": "terminal1"
+            },
+            "tgt": {
+                "port": "input",
+                "process": "rascilsimulateobservation1"
+            }
+        }
+    ],
+    "inports": {},
+    "outports": {}
+}

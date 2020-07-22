@@ -1,0 +1,228 @@
+{
+    "properties": {},
+    "description": "test RASCIL Predict Vis",
+    "processes": {
+        "terminal1": {
+            "component": "com.sap.util.terminal",
+            "metadata": {
+                "label": "Terminal",
+                "x": 1029.9999961853027,
+                "y": 63.99999928474426,
+                "height": 80,
+                "width": 120,
+                "ui": "dynpath",
+                "config": {}
+            }
+        },
+        "rascilsimulateobservation1": {
+            "component": "rascil_visibility_sim",
+            "metadata": {
+                "label": "RASCIL Simulate Observation",
+                "x": 1214.9999952316284,
+                "y": 63.49999928474426,
+                "height": 80,
+                "width": 120,
+                "extensible": true,
+                "config": {}
+            }
+        },
+        "rasciladvisewidefield1": {
+            "component": "rascil_advise_imaging",
+            "metadata": {
+                "label": "RASCIL Advise Wide Field",
+                "x": 273.99999809265137,
+                "y": 40.99999952316284,
+                "height": 80,
+                "width": 120,
+                "extensible": true,
+                "config": {
+                    "delA": 0.02,
+                    "guard_band_image": 8
+                }
+            }
+        },
+        "12multiplexer1": {
+            "component": "com.sap.system.multiplexer.1-2",
+            "metadata": {
+                "label": "1:2 Multiplexer",
+                "x": 442.99999809265137,
+                "y": 40.99999952316284,
+                "height": 80,
+                "width": 120,
+                "extensible": true,
+                "config": {}
+            }
+        },
+        "rascilcreateimagefromvisibilities1": {
+            "component": "rascil_create_image_from_vis",
+            "metadata": {
+                "label": "RASCIL Create Image From Visibilities",
+                "x": 643.999997138977,
+                "y": 57.99999952316284,
+                "height": 80,
+                "width": 120,
+                "extensible": true,
+                "config": {}
+            }
+        },
+        "13multiplexer1": {
+            "component": "com.sap.system.multiplexer.1-3",
+            "metadata": {
+                "label": "1:3 Multiplexer",
+                "x": 72.99999904632568,
+                "y": 63.49999928474426,
+                "height": 80,
+                "width": 120,
+                "extensible": true,
+                "config": {}
+            }
+        },
+        "rascilpredictvisibilities1": {
+            "component": "rascil_predict_visibility",
+            "metadata": {
+                "label": "RASCIL Predict Visibilities",
+                "x": 860.9999961853027,
+                "y": 63.99999928474426,
+                "height": 80,
+                "width": 120,
+                "extensible": true,
+                "config": {}
+            }
+        }
+    },
+    "groups": [],
+    "connections": [
+        {
+            "metadata": {
+                "points": "1153.9999961853027,103.99999928474426 1181.9999957084656,103.99999928474426 1181.9999957084656,103.49999928474426 1209.9999952316284,103.49999928474426"
+            },
+            "src": {
+                "port": "out1",
+                "process": "terminal1"
+            },
+            "tgt": {
+                "port": "input",
+                "process": "rascilsimulateobservation1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "1338.9999952316284,103.49999928474426 1366.9999947547913,103.49999928474426 1366.9999947547913,35.49999976158142 1181.9999957084656,35.49999976158142 1181.9999957084656,34.99999976158142 811.9999966621399,34.99999976158142 811.9999966621399,12 224.99999856948853,12 224.99999856948853,35.49999976158142 12,35.49999976158142 12,103.49999928474426 67.99999904632568,103.49999928474426"
+            },
+            "src": {
+                "port": "output",
+                "process": "rascilsimulateobservation1"
+            },
+            "tgt": {
+                "port": "in1",
+                "process": "13multiplexer1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "196.99999904632568,85.49999928474426 224.99999856948853,85.49999928474426 224.99999856948853,80.99999952316284 268.99999809265137,80.99999952316284"
+            },
+            "src": {
+                "port": "out1",
+                "process": "13multiplexer1"
+            },
+            "tgt": {
+                "port": "input",
+                "process": "rasciladvisewidefield1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "196.99999904632568,103.49999928474426 240.99999856948853,103.49999928474426 240.99999856948853,148.99999904632568 610.9999976158142,148.99999904632568 610.9999976158142,88.99999952316284 638.999997138977,88.99999952316284"
+            },
+            "src": {
+                "port": "out2",
+                "process": "13multiplexer1"
+            },
+            "tgt": {
+                "port": "inputvis",
+                "process": "rascilcreateimagefromvisibilities1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "397.99999809265137,80.99999952316284 437.99999809265137,80.99999952316284"
+            },
+            "src": {
+                "port": "output",
+                "process": "rasciladvisewidefield1"
+            },
+            "tgt": {
+                "port": "in1",
+                "process": "12multiplexer1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "566.9999980926514,89.99999952316284 594.9999976158142,89.99999952316284 594.9999976158142,106.99999952316284 638.999997138977,106.99999952316284"
+            },
+            "src": {
+                "port": "out2",
+                "process": "12multiplexer1"
+            },
+            "tgt": {
+                "port": "inputadvice",
+                "process": "rascilcreateimagefromvisibilities1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "984.9999961853027,103.99999928474426 1024.9999961853027,103.99999928474426"
+            },
+            "src": {
+                "port": "output",
+                "process": "rascilpredictvisibilities1"
+            },
+            "tgt": {
+                "port": "in1",
+                "process": "terminal1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "767.999997138977,97.99999952316284 827.9999966621399,97.99999952316284 827.9999966621399,103.99999928474426 855.9999961853027,103.99999928474426"
+            },
+            "src": {
+                "port": "output",
+                "process": "rascilcreateimagefromvisibilities1"
+            },
+            "tgt": {
+                "port": "inputmodel",
+                "process": "rascilpredictvisibilities1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "196.99999904632568,121.49999928474426 224.99999856948853,121.49999928474426 224.99999856948853,165.99999904632568 811.9999966621399,165.99999904632568 811.9999966621399,85.99999928474426 855.9999961853027,85.99999928474426"
+            },
+            "src": {
+                "port": "out3",
+                "process": "13multiplexer1"
+            },
+            "tgt": {
+                "port": "inputvis",
+                "process": "rascilpredictvisibilities1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "566.9999980926514,71.99999952316284 594.9999976158142,71.99999952316284 594.9999976158142,29 795.9999966621399,29 795.9999966621399,121.99999928474426 855.9999961853027,121.99999928474426"
+            },
+            "src": {
+                "port": "out1",
+                "process": "12multiplexer1"
+            },
+            "tgt": {
+                "port": "inputadvice",
+                "process": "rascilpredictvisibilities1"
+            }
+        }
+    ],
+    "inports": {},
+    "outports": {}
+}

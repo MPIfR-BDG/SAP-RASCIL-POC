@@ -17,7 +17,7 @@
     "iconsrc": "python.svg",
     "config": {
         "$type": "http://sap.com/vflow/rascil_corrupt_visibility.configSchema.json",
-        "phase_error": 1.0,
+        "phase_error": 1,
         "script": "file://script.py",
         "scriptReference": "script.py"
     },

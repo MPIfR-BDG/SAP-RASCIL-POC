@@ -1,0 +1,152 @@
+{
+    "properties": {},
+    "description": "test RASCIL Create Gleam",
+    "processes": {
+        "terminal1": {
+            "component": "com.sap.util.terminal",
+            "metadata": {
+                "label": "Terminal",
+                "x": 611.999997138977,
+                "y": 49.49999952316284,
+                "height": 80,
+                "width": 120,
+                "ui": "dynpath",
+                "config": {}
+            }
+        },
+        "rascilsimulateobservation1": {
+            "component": "rascil_visibility_sim",
+            "metadata": {
+                "label": "RASCIL Simulate Observation",
+                "x": 796.9999961853027,
+                "y": 48.99999952316284,
+                "height": 80,
+                "width": 120,
+                "extensible": true,
+                "config": {}
+            }
+        },
+        "rasciladvisewidefield1": {
+            "component": "rascil_advise_imaging",
+            "metadata": {
+                "label": "RASCIL Advise Wide Field",
+                "x": 257.99999809265137,
+                "y": 57.99999952316284,
+                "height": 80,
+                "width": 120,
+                "extensible": true,
+                "config": {
+                    "delA": 0.02,
+                    "guard_band_image": 8
+                }
+            }
+        },
+        "rascilcreategleammodel1": {
+            "component": "rascil_gleam_model",
+            "metadata": {
+                "label": "RASCIL Create GLEAM Model",
+                "x": 442.99999713897705,
+                "y": 49.49999952316284,
+                "height": 80,
+                "width": 120,
+                "extensible": true,
+                "config": {}
+            }
+        },
+        "12multiplexer1": {
+            "component": "com.sap.system.multiplexer.1-2",
+            "metadata": {
+                "label": "1:2 Multiplexer",
+                "x": 72.99999904632568,
+                "y": 48.99999952316284,
+                "height": 80,
+                "width": 120,
+                "extensible": true,
+                "config": {}
+            }
+        }
+    },
+    "groups": [],
+    "connections": [
+        {
+            "metadata": {
+                "points": "735.999997138977,89.49999952316284 763.9999966621399,89.49999952316284 763.9999966621399,88.99999952316284 791.9999961853027,88.99999952316284"
+            },
+            "src": {
+                "port": "out1",
+                "process": "terminal1"
+            },
+            "tgt": {
+                "port": "input",
+                "process": "rascilsimulateobservation1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "920.9999961853027,88.99999952316284 948.9999957084656,88.99999952316284 948.9999957084656,21 763.9999966621399,21 763.9999966621399,20.5 409.9999976158142,20.5 409.9999976158142,12 224.99999856948853,12 224.99999856948853,21 12,21 12,88.99999952316284 67.99999904632568,88.99999952316284"
+            },
+            "src": {
+                "port": "output",
+                "process": "rascilsimulateobservation1"
+            },
+            "tgt": {
+                "port": "in1",
+                "process": "12multiplexer1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "196.99999904632568,97.99999952316284 252.99999809265137,97.99999952316284"
+            },
+            "src": {
+                "port": "out2",
+                "process": "12multiplexer1"
+            },
+            "tgt": {
+                "port": "input",
+                "process": "rasciladvisewidefield1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "196.99999904632568,79.99999952316284 224.99999856948853,79.99999952316284 224.99999856948853,29 409.9999976158142,29 409.9999976158142,80.49999952316284 437.99999713897705,80.49999952316284"
+            },
+            "src": {
+                "port": "out1",
+                "process": "12multiplexer1"
+            },
+            "tgt": {
+                "port": "inputvis",
+                "process": "rascilcreategleammodel1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "381.99999809265137,97.99999952316284 409.9999976158142,97.99999952316284 409.9999976158142,98.49999952316284 437.99999713897705,98.49999952316284"
+            },
+            "src": {
+                "port": "output",
+                "process": "rasciladvisewidefield1"
+            },
+            "tgt": {
+                "port": "inputadvice",
+                "process": "rascilcreategleammodel1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "566.999997138977,89.49999952316284 606.999997138977,89.49999952316284"
+            },
+            "src": {
+                "port": "output",
+                "process": "rascilcreategleammodel1"
+            },
+            "tgt": {
+                "port": "in1",
+                "process": "terminal1"
+            }
+        }
+    ],
+    "inports": {},
+    "outports": {}
+}
