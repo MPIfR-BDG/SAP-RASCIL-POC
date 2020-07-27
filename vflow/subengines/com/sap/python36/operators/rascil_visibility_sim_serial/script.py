@@ -68,7 +68,8 @@ def wrapper(api):
         for bv in bvis_list:
             vis = convert_bvis_to_vis(bv)
             # single element list expected at the output
-            vis_list = [vis]
+            vis_list = []
+            vis_list.append(vis)
             api.send("output",pickle.dumps(vis_list))
 
     api.add_shutdown_handler(lambda: log.info(
