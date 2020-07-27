@@ -30,6 +30,6 @@ class TestVisibilitySim(BaseRascilTest):
             vis_pickle = self.api.test.read("output")
             vis_list = pickle.loads(vis_pickle)
             self.api.logger.info("{} visibilities returned".format(len(vis_list)))
-            print(len(vis_list[0].frequency))
+            self.api.logger.info(len(vis_list[0].frequency))
             with open(self.get_path("vislist_out_{}.pickle".format(str(counter).zfill(3))), "wb") as f:
                 pickle.dump(vis_list, f)
