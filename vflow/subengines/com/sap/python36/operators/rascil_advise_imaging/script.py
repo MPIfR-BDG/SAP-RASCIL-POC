@@ -1,4 +1,5 @@
 import json
+import codecs
 import pickle
 import numpy as np
 import astropy.units as u
@@ -31,7 +32,7 @@ def wrapper(api):
 
     def execute(vis_pickle):
         log.debug("Executing advise wide field")
-        vis_list = pickle.loads(vis_pickle)
+        vis_list = pickle.loads(codecs.decode(vis_pickle.encode(), "base64"))
         log.debug("vis_list size = {}".format(len(vis_list)))
         wprojection_planes = api.config.wprojection_planes
         log.debug("wprojection_planes = {}".format(wprojection_planes))
