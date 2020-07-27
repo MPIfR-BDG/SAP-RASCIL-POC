@@ -1,3 +1,4 @@
+import codecs
 import pickle
 import os
 from rascil_test_helper import BaseRascilTest
@@ -26,7 +27,7 @@ class TestVisibilitySim(BaseRascilTest):
 
         while self.api.test.hasnext("output"):
             vis_pickle = self.api.test.read("output")
-            vis_list = pickle.loads(vis_pickle)
+            vis_list = pickle.loads(codecs.decode(vis_pickle.encode(), "base64"))
             self.api.logger.info("{} visibilities returned".format(len(vis_list)))
             with open(self.get_path("vislist_out.pickle"), "wb") as f:
                 pickle.dump(vis_list, f)

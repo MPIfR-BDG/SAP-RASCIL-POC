@@ -1,5 +1,6 @@
 import json
 import pickle
+import codecs
 import numpy as np
 import astropy.units as u
 from astropy.coordinates import SkyCoord
@@ -28,11 +29,12 @@ def wrapper(api):
 
     def execute(vis_pickle):
         log.debug("Executing visibility corruption")
-        vis_list = pickle.loads(vis_pickle)
+        vis_list = pickle.loads(codecs.decode(vis_pickle.encode(), "base64"))
         corrupted_vislist = corrupt_list_serial_workflow(
             vis_list,
             phase_error=api.config.phase_error)
-        api.send("output", pickle.dumps(corrupted_vislist))
+        pickled = codecs.encode(pickle.dumps(corrupted_vislist), "base64").decode()
+        api.send("output", pickled)
 
     api.add_shutdown_handler(lambda: log.info(
         "Shutting down visibility corruption operator"))

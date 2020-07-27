@@ -1,4 +1,5 @@
 import json
+import codecs
 import pickle
 import numpy as np
 import astropy.units as u
@@ -36,8 +37,8 @@ def wrapper(api):
                                operator configuration.
         """
         log.debug("Executing GLEAM model generation")
-        vis_list = pickle.loads(vis_pickle)
-        advice = pickle.loads(advice_pickle)
+        vis_list = pickle.loads(codecs.decode(vis_pickle.encode(), "base64"))
+        advice = pickle.loads(codecs.decode(advice_pickle.encode(), "base64"))
         npixel = advice['npixel']
         cellsize = advice['cellsize']
         gleam_model = []
@@ -52,7 +53,8 @@ def wrapper(api):
                     polarisation_frame=PolarisationFrame("stokesI"),
                     flux_limit=api.config.flux_limit,
                     applybeam=True))
-        api.send("output", pickle.dumps(gleam_model))
+        pickled = codecs.encode(pickle.dumps(gleam_model), "base64").decode()
+        api.send("output", pickled)
 
     api.add_shutdown_handler(lambda: log.info(
         "Shutting down GLEAM model generation operator"))

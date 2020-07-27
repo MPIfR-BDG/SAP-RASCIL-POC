@@ -1,4 +1,5 @@
 import pickle
+import codecs
 import os
 from rascil_test_helper import BaseRascilTest
 
@@ -22,13 +23,13 @@ class TestVisibilitySim(BaseRascilTest):
     def test_default_config(self):
         self.script.wrapper(self.api)
         self.log_config()
-        self.api.test.write("input", "{}")  # empty json input
+        self.api.test.write("input", "{\"n_frequency_windows\":10}")  # empty json input
 
         counter = 0
         while self.api.test.hasnext("output"):
             counter += 1
             vis_pickle = self.api.test.read("output")
-            vis_list = pickle.loads(vis_pickle)
+            vis_list = pickle.loads(codecs.decode(vis_pickle.encode(), "base64"))
             self.api.logger.info("{} visibilities returned".format(len(vis_list)))
             self.api.logger.info(len(vis_list[0].frequency))
             with open(self.get_path("vislist_out_{}.pickle".format(str(counter).zfill(3))), "wb") as f:

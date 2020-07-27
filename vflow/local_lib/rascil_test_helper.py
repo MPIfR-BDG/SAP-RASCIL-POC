@@ -29,3 +29,8 @@ class BaseRascilTest(unittest.TestCase):
                 return f.read()
         self.api.test.write(ports, [read(i) for i in pickle_files])
 
+    def text_pickles_to_ports(self, ports, text_pickle_files):
+        def read(text_pickle_file):
+            with open(text_pickle_file, "r") as f:
+                return f.read()
+        self.api.test.write(ports, [read(i) for i in text_pickle_files])

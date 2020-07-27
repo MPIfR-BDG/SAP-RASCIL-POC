@@ -2,6 +2,7 @@
 launchpad/
 vflow/general/
 .repoid
+*.pickle
 
 # vi text editor
 *~

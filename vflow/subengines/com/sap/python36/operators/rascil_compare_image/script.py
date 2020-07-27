@@ -1,4 +1,5 @@
 import pickle
+import codecs
 
 def wrapper(api):
     log = api.logger
@@ -6,9 +7,10 @@ def wrapper(api):
 
     def execute(image1_pickle, image2_pickle):
         log.debug("Executing image comparison")
-        image1 = pickle.loads(image1_pickle)
-        image2 = pickle.loads(image1_pickle)
-        api.send("output", pickle.dumps({"comparison": None}))
+        image1 = pickle.loads(codecs.decode(image1_pickle.encode(), "base64"))
+        image2 = pickle.loads(codecs.decode(image2_pickle.encode(), "base64"))
+        pickled = codecs.encode(pickle.dumps({"comparison": None}), "base64").decode()
+        api.send("output", pickled)
 
     api.add_shutdown_handler(lambda: log.info(
         "Shutting down image comparison operator"))

@@ -1,5 +1,6 @@
 import json
 import pickle
+import codecs
 import numpy as np
 import astropy.units as u
 from astropy.coordinates import SkyCoord
@@ -23,6 +24,12 @@ from rascil.workflows.serial.imaging.imaging_serial import deconvolve_list_seria
 def pickle_to_file(obj, filename):
     f = open(filename, "wb")
     pickle.dump(obj, f)
+    f.close()
+
+def pickle_to_text_file(obj, filename):
+    pickled = codecs.encode(pickle.dumps(obj), "base64").decode()
+    f = open(filename, "w")
+    f.write(pickled)
     f.close()
 
 antenna_configuration = "LOWBD2"
@@ -61,6 +68,7 @@ vis_list = [convert_bvis_to_vis(bv) for bv in bvis_list]
 
 ##### artifact 1: serialized vis_list #########
 pickle_to_file(vis_list,"vislist.pickle")
+pickle_to_text_file(vis_list,"vislist.pickle.txt")
 ###############################################
 
 delA = 0.02
@@ -86,6 +94,7 @@ advice = {
 
 ##### artifact 2: serialized advice ###########
 pickle_to_file(advice,"advice.pickle")
+pickle_to_text_file(advice,"advice.pickle.txt")
 ###############################################
 
 flux_limit = 1
@@ -108,6 +117,7 @@ for vis in vis_list:
 
 ##### artifact 3: serialized gleam model list #####
 pickle_to_file(gleam_model_list,"gleam_model_list.pickle")
+pickle_to_text_file(gleam_model_list,"gleam_model_list.pickle.txt")
 ###################################################
 
 
@@ -127,6 +137,7 @@ for vis in vis_list:
 
 ##### artifact 4: serialized model list #####
 pickle_to_file(model_list,"model_list.pickle")
+pickle_to_text_file(model_list,"model_list.pickle.txt")
 ############################################################
 
 
@@ -138,6 +149,7 @@ predicted_vislist = predict_list_serial_workflow(
 
 ##### artifact 5: serialized predicted visibility list #####
 pickle_to_file(predicted_vislist,"predicted_vislist.pickle")
+pickle_to_text_file(predicted_vislist,"predicted_vislist.pickle.txt")
 ############################################################
 
 
@@ -151,6 +163,7 @@ image_list = invert_list_serial_workflow(
 
 ##### artifact 6: serialized image list #####
 pickle_to_file(image_list,"image_list.pickle")
+pickle_to_text_file(image_list,"image_list.pickle.txt")
 ############################################################
 
 
@@ -164,6 +177,7 @@ psf_list = invert_list_serial_workflow(
 
 ##### artifact 7: serialized psf list #####
 pickle_to_file(psf_list,"psf_list.pickle")
+pickle_to_text_file(psf_list,"psf_list.pickle.txt")
 ############################################################
 
 phase_error=1
@@ -173,6 +187,7 @@ corrupted_vislist = corrupt_list_serial_workflow(
 
 ##### artifact 8: serialized corrupted vis list #####
 pickle_to_file(corrupted_vislist,"corrupted_vislist.pickle")
+pickle_to_text_file(corrupted_vislist,"corrupted_vislist.pickle.txt")
 ############################################################
 
 
@@ -186,6 +201,7 @@ corrupted_image_list = invert_list_serial_workflow(
 
 ##### artifact 9: serialized corrupted image list ##########
 pickle_to_file(corrupted_image_list,"corrupted_image_list.pickle")
+pickle_to_text_file(corrupted_image_list,"corrupted_image_list.pickle.txt")
 ############################################################
 
 
@@ -217,6 +233,7 @@ deconvolved_image_list = deconvolve_list_serial_workflow(
 
 ##### artifact 10: serialized deconvolved image list ##########
 pickle_to_file(deconvolved_image_list,"deconvolved_image_list.pickle")
+pickle_to_text_file(deconvolved_image_list,"deconvolved_image_list.pickle.txt")
 ############################################################
 
 
@@ -237,4 +254,5 @@ deconvolved_corrupted_image_list = deconvolve_list_serial_workflow(
 
 ##### artifact 11: serialized deconvolved corrupted image list ##########
 pickle_to_file(deconvolved_corrupted_image_list,"deconvolved_corrupted_image_list.pickle")
+pickle_to_text_file(deconvolved_corrupted_image_list,"deconvolved_corrupted_image_list.pickle.txt")
 #########################################################################

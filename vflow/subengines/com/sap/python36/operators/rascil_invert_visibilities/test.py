@@ -1,4 +1,5 @@
 import pickle
+import codecs
 import os
 from rascil_test_helper import BaseRascilTest
 
@@ -14,15 +15,15 @@ class TestInvertVisibilities(BaseRascilTest):
         self.api.config.dopsf = dopsf
         self.log_config()
         self.script.wrapper(self.api)
-        self.pickles_to_ports(
+        self.text_pickles_to_ports(
             ["inputmodel", "inputvis", "inputadvice"],
-            [self.get_path("model_list.pickle"),
-             self.get_path("vislist.pickle"),
-             self.get_path("advice.pickle")])
+            [self.get_path("model_list.pickle.txt"),
+             self.get_path("vislist.pickle.txt"),
+             self.get_path("advice.pickle.txt")])
 
         while self.api.test.hasnext("output"):
             image_pickle = self.api.test.read("output")
-            image_list = pickle.loads(image_pickle)
+            image_list = pickle.loads(codecs.decode(image_pickle.encode(), "base64"))
             self.api.logger.info("Generated {} images".format(len(image_list)))
             with open(self.get_path(outfile), "wb") as f:
                 pickle.dump(image_list, f)

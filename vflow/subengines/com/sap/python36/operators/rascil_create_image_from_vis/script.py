@@ -1,5 +1,6 @@
 import json
 import pickle
+import codecs
 import numpy as np
 import astropy.units as u
 from astropy.coordinates import SkyCoord
@@ -30,8 +31,8 @@ def wrapper(api):
 
     def execute(vis_pickle, advice_pickle):
         log.debug("Executing model creation")
-        vis_list = pickle.loads(vis_pickle)
-        advice = pickle.loads(advice_pickle)
+        vis_list = pickle.loads(codecs.decode(vis_pickle.encode(), "base64"))
+        advice = pickle.loads(codecs.decode(advice_pickle.encode(), "base64"))
         vis_slices = advice['vis_slices']
         npixel = advice['npixel']
         cellsize = advice['cellsize']
@@ -48,7 +49,8 @@ def wrapper(api):
                     polarisation_frame=PolarisationFrame("stokesI")
                 )
             )
-        api.send("output", pickle.dumps(model_list))
+        pickled = codecs.encode(pickle.dumps(model_list), "base64").decode()
+        api.send("output", pickled)
 
 
     api.add_shutdown_handler(lambda: log.info(

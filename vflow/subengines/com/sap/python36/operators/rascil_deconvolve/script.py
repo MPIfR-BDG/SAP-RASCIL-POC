@@ -1,5 +1,6 @@
 import json
 import pickle
+import codecs
 import numpy as np
 import astropy.units as u
 from astropy.coordinates import SkyCoord
@@ -28,9 +29,9 @@ def wrapper(api):
 
     def execute(image_pickle, psf_pickle, model_pickle):
         log.debug("Executing deconvolution")
-        image_list = pickle.loads(image_pickle)
-        psf_list = pickle.loads(psf_pickle)
-        model_list = pickle.loads(model_pickle)
+        image_list = pickle.loads(codecs.decode(image_pickle.encode(), "base64"))
+        psf_list = pickle.loads(codecs.decode(psf_pickle.encode(), "base64"))
+        model_list = pickle.loads(codecs.decode(model_pickle.encode(), "base64"))
         deconvolved = deconvolve_list_serial_workflow(
             image_list,
             psf_list,
@@ -45,7 +46,8 @@ def wrapper(api):
             threshold=api.config.threshold,
             gain=api.config.gain,
             psf_support=api.config.psf_support)
-        api.send("output", pickle.dumps(deconvolved))
+        pickled = codecs.encode(pickle.dumps(deconvolved), "base64").decode()
+        api.send("output", pickled)
 
     api.add_shutdown_handler(lambda: log.info(
         "Shutting down deconvolution operator"))

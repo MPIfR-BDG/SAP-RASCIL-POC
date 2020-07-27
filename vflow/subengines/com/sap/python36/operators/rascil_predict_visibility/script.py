@@ -1,4 +1,5 @@
 import json
+import codecs
 import pickle
 import numpy as np
 import astropy.units as u
@@ -28,15 +29,16 @@ def wrapper(api):
 
     def execute(vis_pickle, model_pickle, advice_pickle):
         log.debug("Executing visibility prediction")
-        vis_list = pickle.loads(vis_pickle)
-        model_list = pickle.loads(model_pickle)
-        advice = pickle.loads(advice_pickle)
+        model_list = pickle.loads(codecs.decode(model_pickle.encode(), "base64"))
+        vis_list = pickle.loads(codecs.decode(vis_pickle.encode(), "base64"))
+        advice = pickle.loads(codecs.decode(advice_pickle.encode(), "base64"))
         predicted_vislist = predict_list_serial_workflow(
             vis_list,
             model_list,
             context='wstack',
             vis_slices=advice["vis_slices"])
-        api.send("output", pickle.dumps(predicted_vislist))
+        pickled = codecs.encode(pickle.dumps(predicted_vislist), "base64").decode()
+        api.send("output", pickled)
 
     api.add_shutdown_handler(lambda: log.info(
         "Shutting down visibility prediction operator"))

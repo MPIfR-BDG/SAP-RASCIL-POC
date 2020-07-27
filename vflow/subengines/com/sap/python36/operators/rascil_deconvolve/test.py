@@ -1,5 +1,6 @@
 import os
 import pickle
+import codecs
 from rascil_test_helper import BaseRascilTest
 
 
@@ -23,15 +24,15 @@ class TestDeconvolve(BaseRascilTest):
     def test_default_config(self):
         self.log_config()
         self.script.wrapper(self.api)
-        self.pickles_to_ports(
+        self.text_pickles_to_ports(
             ["inputimage", "inputpsf", "inputmodel"],
-            [self.get_path("image_list.pickle"),
-             self.get_path("psf_list.pickle"),
-             self.get_path("model_list.pickle")])
+            [self.get_path("image_list.pickle.txt"),
+             self.get_path("psf_list.pickle.txt"),
+             self.get_path("model_list.pickle.txt")])
 
         while self.api.test.hasnext("output"):
             image_pickle = self.api.test.read("output")
-            image_list = pickle.loads(image_pickle)
+            image_list = pickle.loads(codecs.decode(image_pickle.encode(), "base64"))
             self.api.logger.info("{} images returned".format(len(image_list)))
             with open(self.get_path("imagelist_out.pickle"), "wb") as f:
                 pickle.dump(image_list, f)

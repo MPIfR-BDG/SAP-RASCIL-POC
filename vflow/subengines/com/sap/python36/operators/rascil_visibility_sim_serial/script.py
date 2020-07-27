@@ -1,5 +1,6 @@
 import json
 import pickle
+import codecs
 import numpy as np
 import astropy.units as u
 from astropy.coordinates import SkyCoord
@@ -70,7 +71,8 @@ def wrapper(api):
             # single element list expected at the output
             vis_list = []
             vis_list.append(vis)
-            api.send("output",pickle.dumps(vis_list))
+            pickled = codecs.encode(pickle.dumps(vis_list), "base64").decode()
+            api.send("output", pickled)
 
     api.add_shutdown_handler(lambda: log.info(
         "Shutting down visibility simulation operator"))
