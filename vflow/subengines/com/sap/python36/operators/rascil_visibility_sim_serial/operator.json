@@ -1,0 +1,36 @@
+{
+    "description": "RASCIL Simulate Observation Serial Output",
+    "component": "com.sap.system.python3Operator",
+    "versionStatus": "active",
+    "inports": [
+        {
+            "name": "input",
+            "type": "string"
+        }
+    ],
+    "outports": [
+        {
+            "name": "output",
+            "type": "string"
+        }
+    ],
+    "iconsrc": "python.svg",
+    "config": {
+        "$type": "http://sap.com/vflow/rascil_visibility_sim_serial.configSchema.json",
+        "antenna_configuration": "LOWBD2",
+        "frequency_hi_hz": 120000000,
+        "frequency_low_hz": 100000000,
+        "max_radius": 300,
+        "n_frequency_windows": 7,
+        "n_time_steps": 5,
+        "phasecentre_dec_deg": -60,
+        "phasecentre_epoch": "J2000",
+        "phasecentre_frame": "icrs",
+        "phasecentre_ra_deg": 30,
+        "script": "file://script.py",
+        "scriptReference": "script.py"
+    },
+    "tags": {
+        "rascilfull": ""
+    }
+}
