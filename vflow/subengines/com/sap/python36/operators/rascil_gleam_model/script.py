@@ -52,7 +52,7 @@ def wrapper(api):
                     polarisation_frame=PolarisationFrame("stokesI"),
                     flux_limit=api.config.flux_limit,
                     applybeam=True))
-        api.send("output", pickle.dumps(gleam_model))
+        api.send("output", pickle.dumps(gleam_model, protocol=2))
 
     api.add_shutdown_handler(lambda: log.info(
         "Shutting down GLEAM model generation operator"))

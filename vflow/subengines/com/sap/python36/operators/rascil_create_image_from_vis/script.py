@@ -48,7 +48,7 @@ def wrapper(api):
                     polarisation_frame=PolarisationFrame("stokesI")
                 )
             )
-        api.send("output", pickle.dumps(model_list))
+        api.send("output", pickle.dumps(model_list, protocol=2))
 
 
     api.add_shutdown_handler(lambda: log.info(

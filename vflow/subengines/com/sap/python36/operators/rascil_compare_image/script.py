@@ -8,7 +8,7 @@ def wrapper(api):
         log.debug("Executing image comparison")
         image1 = pickle.loads(image1_pickle)
         image2 = pickle.loads(image1_pickle)
-        api.send("output", pickle.dumps({"comparison": None}))
+        api.send("output", pickle.dumps({"comparison": None}, protocol=2))
 
     api.add_shutdown_handler(lambda: log.info(
         "Shutting down image comparison operator"))

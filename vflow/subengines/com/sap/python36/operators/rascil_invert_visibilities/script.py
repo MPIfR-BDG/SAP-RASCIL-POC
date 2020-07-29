@@ -37,7 +37,7 @@ def wrapper(api):
             context='wstack',
             vis_slices=advice["vis_slices"],
             dopsf=api.config.dopsf)
-        api.send("output", pickle.dumps(image_list))
+        api.send("output", pickle.dumps(image_list, protocol=2))
 
     api.add_shutdown_handler(lambda: log.info(
         "Shutting down visibility inversion operator"))

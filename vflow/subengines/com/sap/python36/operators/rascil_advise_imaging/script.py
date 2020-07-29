@@ -52,7 +52,7 @@ def wrapper(api):
             "npixel": advice_high['npixels2'],
             "cellsize": min(advice_low['cellsize'], advice_high['cellsize'])
         }
-        api.send("output", pickle.dumps(advice))
+        api.send("output", pickle.dumps(advice, protocol=2))
 
     api.add_shutdown_handler(lambda: log.info(
         "Shutting down advise wide field operator"))

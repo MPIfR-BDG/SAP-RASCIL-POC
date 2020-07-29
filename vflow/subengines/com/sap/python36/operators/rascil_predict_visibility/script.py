@@ -36,7 +36,7 @@ def wrapper(api):
             model_list,
             context='wstack',
             vis_slices=advice["vis_slices"])
-        api.send("output", pickle.dumps(predicted_vislist))
+        api.send("output", pickle.dumps(predicted_vislist, protocol=2))
 
     api.add_shutdown_handler(lambda: log.info(
         "Shutting down visibility prediction operator"))

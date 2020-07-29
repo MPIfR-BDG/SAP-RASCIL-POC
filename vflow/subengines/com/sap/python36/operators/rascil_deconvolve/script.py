@@ -45,7 +45,7 @@ def wrapper(api):
             threshold=api.config.threshold,
             gain=api.config.gain,
             psf_support=api.config.psf_support)
-        api.send("output", pickle.dumps(deconvolved))
+        api.send("output", pickle.dumps(deconvolved, protocol=2))
 
     api.add_shutdown_handler(lambda: log.info(
         "Shutting down deconvolution operator"))
