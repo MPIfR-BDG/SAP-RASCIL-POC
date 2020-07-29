@@ -12,6 +12,11 @@
         {
             "name": "output",
             "type": "string"
+        },
+        {
+            "name": "totvis",
+            "type": "scalar",
+            "vtype-ID": "com.sap.core.int16"
         }
     ],
     "iconsrc": "python.svg",
