@@ -1,0 +1,27 @@
+{
+    "description": "all visibilities gate",
+    "component": "com.sap.system.python3Operator",
+    "versionStatus": "active",
+    "inports": [
+        {
+            "name": "input",
+            "type": "python36.string"
+        },
+        {
+            "name": "numofvis",
+            "type": "python36.int"
+        }
+    ],
+    "outports": [
+        {
+            "name": "output",
+            "type": "string"
+        }
+    ],
+    "icon": "puzzle-piece",
+    "config": {
+        "$type": "http://sap.com/vflow/rascil_allVisGate.configSchema.json",
+        "script": "file://script.py",
+        "scriptReference": "script.py"
+    }
+}
