@@ -12,6 +12,11 @@
         {
             "name": "output",
             "type": "string"
+        },
+        {
+            "name": "outputsize",
+            "type": "scalar",
+            "vtype-ID": "com.sap.core.int16"
         }
     ],
     "iconsrc": "python.svg",

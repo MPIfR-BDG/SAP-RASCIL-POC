@@ -66,6 +66,7 @@ def wrapper(api):
             order="frequency",
             rmax=get_param("max_radius"),
             format="blockvis")
+        api.send("outputsize",len(bvis_list))
         for bv in bvis_list:
             vis = convert_bvis_to_vis(bv)
             # single element list expected at the output
