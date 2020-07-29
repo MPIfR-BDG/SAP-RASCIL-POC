@@ -70,7 +70,7 @@ def wrapper(api):
             # single element list expected at the output
             vis_list = []
             vis_list.append(vis)
-            api.send("output",pickle.dumps(vis_list))
+            api.send("output",pickle.dumps(vis_list, protocol=2))
 
     api.add_shutdown_handler(lambda: log.info(
         "Shutting down visibility simulation operator"))
