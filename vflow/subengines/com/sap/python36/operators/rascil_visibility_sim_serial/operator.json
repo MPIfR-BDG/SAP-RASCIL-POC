@@ -5,13 +5,13 @@
     "inports": [
         {
             "name": "input",
-            "type": "string"
+            "type": "python36.string"
         }
     ],
     "outports": [
         {
             "name": "output",
-            "type": "string"
+            "type": "python36.string"
         }
     ],
     "iconsrc": "python.svg",

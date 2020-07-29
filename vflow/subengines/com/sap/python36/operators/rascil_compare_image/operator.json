@@ -5,17 +5,17 @@
     "inports": [
         {
             "name": "image1",
-            "type": "string"
+            "type": "python36.string"
         },
         {
             "name": "image2",
-            "type": "string"
+            "type": "python36.string"
         }
     ],
     "outports": [
         {
             "name": "output",
-            "type": "string"
+            "type": "python36.string"
         }
     ],
     "iconsrc": "python.svg",

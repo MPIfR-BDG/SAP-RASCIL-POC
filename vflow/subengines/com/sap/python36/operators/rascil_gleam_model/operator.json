@@ -5,17 +5,17 @@
     "inports": [
         {
             "name": "inputvis",
-            "type": "string"
+            "type": "python36.string"
         },
         {
             "name": "inputadvice",
-            "type": "string"
+            "type": "python36.string"
         }
     ],
     "outports": [
         {
             "name": "output",
-            "type": "string"
+            "type": "python36.string"
         }
     ],
     "iconsrc": "python.svg",
