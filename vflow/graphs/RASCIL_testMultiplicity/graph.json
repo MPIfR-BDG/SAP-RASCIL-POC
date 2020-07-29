@@ -1,6 +1,6 @@
 {
     "properties": {},
-    "description": "Simple RASCIL visibility generation operator",
+    "description": "RASCIL Test Multiplicity",
     "processes": {
         "terminal1": {
             "component": "com.sap.util.terminal",
@@ -11,18 +11,6 @@
                 "height": 80,
                 "width": 120,
                 "ui": "dynpath",
-                "config": {}
-            }
-        },
-        "rascilsimulateobservation1": {
-            "component": "rascil_visibility_sim",
-            "metadata": {
-                "label": "RASCIL Simulate Observation",
-                "x": 627.9999961853027,
-                "y": 177.99999952316284,
-                "height": 80,
-                "width": 120,
-                "extensible": true,
                 "config": {}
             }
         },
@@ -302,6 +290,18 @@
                 "extensible": true,
                 "config": {}
             }
+        },
+        "rascilsimulateobservationserialoutput1": {
+            "component": "rascil_visibility_sim_serial",
+            "metadata": {
+                "label": "RASCIL Simulate Observation Serial Output",
+                "x": 614,
+                "y": 156,
+                "height": 80,
+                "width": 120,
+                "extensible": true,
+                "config": {}
+            }
         }
     },
     "groups": [],
@@ -343,19 +343,6 @@
             "tgt": {
                 "port": "in1",
                 "process": "13multiplexer3"
-            }
-        },
-        {
-            "metadata": {
-                "points": "751.9999961853027,217.99999952316284 791.9999961853027,217.99999952316284"
-            },
-            "src": {
-                "port": "output",
-                "process": "rascilsimulateobservation1"
-            },
-            "tgt": {
-                "port": "in1",
-                "process": "14multiplexer1"
             }
         },
         {
@@ -737,19 +724,6 @@
         },
         {
             "metadata": {
-                "points": "566.999997138977,143.99999976158142 594.9999966621399,143.99999976158142 594.9999966621399,217.99999952316284 622.9999961853027,217.99999952316284"
-            },
-            "src": {
-                "port": "output",
-                "process": "stringtopy3string1"
-            },
-            "tgt": {
-                "port": "input",
-                "process": "rascilsimulateobservation1"
-            }
-        },
-        {
-            "metadata": {
                 "points": "2905.999987602234,217.99999952316284 2945.999987602234,217.99999952316284"
             },
             "src": {
@@ -824,6 +798,32 @@
             "tgt": {
                 "port": "in2",
                 "process": "21multiplexer1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "566.999997138977,143.99999976158142 588,144 588,196 609,196"
+            },
+            "src": {
+                "port": "output",
+                "process": "stringtopy3string1"
+            },
+            "tgt": {
+                "port": "input",
+                "process": "rascilsimulateobservationserialoutput1"
+            }
+        },
+        {
+            "metadata": {
+                "points": "738,196 765,196 765,218 791.9999961853027,217.99999952316284"
+            },
+            "src": {
+                "port": "output",
+                "process": "rascilsimulateobservationserialoutput1"
+            },
+            "tgt": {
+                "port": "in1",
+                "process": "14multiplexer1"
             }
         }
     ],

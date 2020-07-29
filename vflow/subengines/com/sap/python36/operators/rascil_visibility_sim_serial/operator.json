@@ -12,6 +12,10 @@
         {
             "name": "output",
             "type": "python36.string"
+        },
+        {
+            "name": "numofvis",
+            "type": "python36.int"
         }
     ],
     "iconsrc": "python.svg",
